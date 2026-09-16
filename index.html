@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/act-view.css?v=fc20">
+<link rel="stylesheet" href="css/act-view.css?v=fc21">
 <style>
 :root {
   --primary: #283fff;
@@ -512,7 +512,11 @@ ul, ol { margin: 0; padding: 0; }
 @media (max-width: 1050px) {
   .browser-container { display: none; }
   .browser-toosmall { display: flex; }
-  .section-prototype { padding: calc(var(--header-h) + 24px) 24px 24px; }
+  /* Keep the prototype area blue (matching the scrolled-in state at wide sizes).
+     The scroll-reveal JS paints the whole <body> blue, but it bails out at this
+     width, so we set the blue statically on the section itself instead — that
+     way only the prototype area is blue, not every section. */
+  .section-prototype { padding: calc(var(--header-h) + 24px) 24px 24px; background: var(--primary); }
 }
 
 /* Tighten the gap between analysis and reframe sections to half */
@@ -963,7 +967,7 @@ ul, ol { margin: 0; padding: 0; }
 </script>
 
 <!-- Act view — high-fidelity prototype (fills the browser chrome above) -->
-<script src="js/act-view.js?v=fc20" defer></script>
+<script src="js/act-view.js?v=fc21" defer></script>
 
 </body>
 </html>
