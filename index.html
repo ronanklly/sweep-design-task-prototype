@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/act-view.css?v=fc28">
+<link rel="stylesheet" href="css/act-view.css?v=fc29">
 <style>
 :root {
   --primary: #283fff;
@@ -936,8 +936,7 @@ ul, ol { margin: 0; padding: 0; }
   <button class="proto-lock" id="proto-lock" type="button" aria-label="Press and hold to exit the prototype">
     <span class="proto-lock-fill" aria-hidden="true"></span>
     <svg class="proto-lock-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M12 19V5"/>
-      <path d="M6 11l6-6 6 6"/>
+      <path d="M6 6l12 12M18 6L6 18"/>
     </svg>
   </button>
   <span class="proto-lock-label" aria-hidden="true">Hold to exit</span>
@@ -1106,12 +1105,11 @@ ul, ol { margin: 0; padding: 0; }
     }
     function exitPrototype() {
       releaseLock();
-      // Scroll back up to the cards (prototype still shown, so the reveal plays out in
-      // reverse), then take it out of flow again. Clamp the target to the no-prototype
-      // page bottom so hiding it can't jump the page.
-      var maxNoProto = sectionProto.offsetTop - window.innerHeight;
-      var reframeY = sectionReframe ? sectionReframe.getBoundingClientRect().top + window.pageYOffset - headerH : 0;
-      var y = Math.max(0, Math.min(reframeY, maxNoProto));
+      // Return to the pre-prototype state: scrolled to the bottom of the presentation
+      // (last cards + 60px grey visible), prototype still shown during the scroll so the
+      // reveal plays out in reverse, then taken back out of flow. This lands exactly at
+      // the no-prototype page bottom, so hiding it can't jump the page.
+      var y = Math.max(0, sectionProto.offsetTop - window.innerHeight);
       smoothScrollTo(y, function () {
         sectionProto.style.display = 'none';
         protoShown = false;
@@ -1200,7 +1198,7 @@ ul, ol { margin: 0; padding: 0; }
 </script>
 
 <!-- Act view — high-fidelity prototype (fills the browser chrome above) -->
-<script src="js/act-view.js?v=fc28" defer></script>
+<script src="js/act-view.js?v=fc29" defer></script>
 
 </body>
 </html>
