@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/act-view.css?v=fc27">
+<link rel="stylesheet" href="css/act-view.css?v=fc28">
 <style>
 :root {
   --primary: #283fff;
@@ -529,6 +529,21 @@ ul, ol { margin: 0; padding: 0; }
 }
 .proto-lock.is-holding .proto-lock-fill { width: 100%; transition: width 1.7s linear; }
 .proto-lock-ico { position: relative; z-index: 1; display: block; }
+/* "Hold to exit" caption — 6px below the button, centred on it, fades in with it */
+.proto-lock-label {
+  position: absolute;
+  top: calc(var(--header-h) + 66px);   /* button top (header+24) + 36px height + 6px gap */
+  right: 42px;                         /* the button's horizontal centre (24 + 36/2) … */
+  transform: translateX(50%);          /* … centre the caption on it, any text width */
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 10px;
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.proto-lock.is-visible + .proto-lock-label { opacity: .5; }
 
 /* Too-small fallback: the prototype is a fixed two-column layout, so below 1050px
    we swap the browser chrome for an outlined box (same 14px rounding, 1px white
@@ -554,7 +569,7 @@ ul, ol { margin: 0; padding: 0; }
 @media (max-width: 1050px) {
   .browser-container { display: none; }
   .browser-toosmall { display: flex; }
-  .proto-lock { display: none; }   /* no prototype to lock at this width */
+  .proto-lock, .proto-lock-label { display: none; }   /* no prototype to lock at this width */
   /* Keep the prototype area blue (matching the scrolled-in state at wide sizes).
      The scroll-reveal JS paints the whole <body> blue, but it bails out at this
      width, so we set the blue statically on the section itself instead — that
@@ -925,6 +940,7 @@ ul, ol { margin: 0; padding: 0; }
       <path d="M6 11l6-6 6 6"/>
     </svg>
   </button>
+  <span class="proto-lock-label" aria-hidden="true">Hold to exit</span>
 
   <!-- Fallback shown below 1050px, where the fixed two-column prototype can't fit -->
   <div class="browser-toosmall" id="browser-toosmall">
@@ -1184,7 +1200,7 @@ ul, ol { margin: 0; padding: 0; }
 </script>
 
 <!-- Act view — high-fidelity prototype (fills the browser chrome above) -->
-<script src="js/act-view.js?v=fc27" defer></script>
+<script src="js/act-view.js?v=fc28" defer></script>
 
 </body>
 </html>
