@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/act-view.css?v=fc19">
+<link rel="stylesheet" href="css/act-view.css?v=fc20">
 <style>
 :root {
   --primary: #283fff;
@@ -488,6 +488,33 @@ ul, ol { margin: 0; padding: 0; }
   width: 100%;
 }
 
+/* Too-small fallback: the prototype is a fixed two-column layout, so below 1050px
+   we swap the browser chrome for an outlined box (same 14px rounding, 1px white
+   outline, no fill) with a centred prompt. Toggled with .browser-container in the
+   1050px media query below; the scroll-reveal JS also bails out at that width. */
+.browser-toosmall {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: calc(100vh - var(--header-h) - 48px);
+  border: 1px solid #fff;
+  border-radius: 14px;
+  background: none;
+  padding: 24px;
+}
+.browser-toosmall p {
+  font-family: var(--font);
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+}
+@media (max-width: 1050px) {
+  .browser-container { display: none; }
+  .browser-toosmall { display: flex; }
+  .section-prototype { padding: calc(var(--header-h) + 24px) 24px 24px; }
+}
+
 /* Tighten the gap between analysis and reframe sections to half */
 #section-analysis { padding-bottom: 60px; }
 #section-reframe  { padding-top: 60px; }
@@ -838,6 +865,11 @@ ul, ol { margin: 0; padding: 0; }
     <div class="browser-body-placeholder" id="act-root" aria-label="Act view — high-fidelity prototype"></div>
 
   </div><!-- /browser-container -->
+
+  <!-- Fallback shown below 1050px, where the fixed two-column prototype can't fit -->
+  <div class="browser-toosmall" id="browser-toosmall">
+    <p>Your browser is too small to view the prototype. Please make it bigger</p>
+  </div>
 </section>
 
 <script>
@@ -874,7 +906,13 @@ ul, ol { margin: 0; padding: 0; }
       browserContainer.style.transform = 'none';
     } else {
       var wasInView = false;
+      // Below 1050px the chrome is hidden and the too-small fallback shows instead;
+      // skip the reveal maths (a display:none container reports a zero-height rect,
+      // which would otherwise clamp progress to 1 and paint the whole page blue) and
+      // hand the background back to the stylesheet default.
+      var tooSmallMq = window.matchMedia('(max-width: 1050px)');
       function updateBrowserAnim() {
+        if (tooSmallMq.matches) { document.body.style.backgroundColor = ''; return; }
         var rect = browserContainer.getBoundingClientRect();
         var vh = window.innerHeight;
         var progress = Math.min(1, Math.max(0, (vh - rect.top) / rect.height));
@@ -911,6 +949,9 @@ ul, ol { margin: 0; padding: 0; }
         }
       }, { passive: true });
 
+      // Recompute when crossing the 1050px threshold (resize into/out of fallback)
+      tooSmallMq.addEventListener('change', updateBrowserAnim);
+
       // Run immediately, then again after two frames to catch browser scroll-restoration
       updateBrowserAnim();
       requestAnimationFrame(function () {
@@ -922,7 +963,7 @@ ul, ol { margin: 0; padding: 0; }
 </script>
 
 <!-- Act view — high-fidelity prototype (fills the browser chrome above) -->
-<script src="js/act-view.js?v=fc19" defer></script>
+<script src="js/act-view.js?v=fc20" defer></script>
 
 </body>
 </html>
