@@ -202,9 +202,16 @@
     // Render the whole plot for a given pixel width. Called once on mount and again
     // on every width change — viewBox width == pixel width, so scaling is always 1:1.
     function draw(VBW) {
+      // Below ~520px the 4-item legend can't share the top row with the stat block,
+      // so we drop it onto its own wrapped row beneath the headline (see the
+      // .av-chart-narrow rules in CSS) and grow the top margin to clear it. This is
+      // container-width driven, not viewport-driven, so it also fixes the squeezed
+      // two-column case where a media query would never fire.
+      var narrow = VBW < 520;
+      wrap.classList.toggle('av-chart-narrow', narrow);
       // mT clears the top-left stat overlay (~39px tall) AND leaves a 30px stat→chart
       // gap above the plot (see .av-chart-stats CSS). mL clears the y-axis labels.
-      var mL = 46, mR = 16, mT = 69, mB = 26;
+      var mL = 46, mR = 16, mT = narrow ? 96 : 69, mB = 26;
       var x0 = mL, x1 = VBW - mR, y0 = mT, y1 = VBH - mB;
       var step = (x1 - x0) / (all.length - 1);
       function X(i) { return x0 + i * step; }
@@ -426,7 +433,11 @@
     function curve(pts) { return 'M' + pts[0][0] + ',' + pts[0][1] + ' ' + segs(pts); }
 
     function draw(VBW) {
-      var mL = 46, mR = 16, mT = 69, mB = 26;
+      // Same container-aware collapse as the main chart — the 3-item legend drops
+      // beneath the headline and the top margin grows to clear it (see CSS).
+      var narrow = VBW < 460;
+      wrap.classList.toggle('av-chart-narrow', narrow);
+      var mL = 46, mR = 16, mT = narrow ? 96 : 69, mB = 26;
       var x0 = mL, x1 = VBW - mR, y0 = mT, y1 = VBH - mB;
       var step = (x1 - x0) / (all.length - 1);
       function X(i) { return x0 + i * step; }

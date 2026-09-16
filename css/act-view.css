@@ -162,6 +162,15 @@
 }
 .av-legend .av-lg { display: inline-flex; align-items: center; gap: 2px; font-size: 11px; color: var(--av-sub); }
 .av-legend .av-lg svg { display: block; overflow: visible; }
+/* Narrow container (set by the chart JS via VBW, not the viewport): the legend can
+   no longer sit top-right beside the stat block without overlapping it, so it drops
+   to its own wrapped row directly under the headline. The chart's mT grows to match. */
+.av-chart-narrow .av-legend {
+  top: 46px; right: auto; left: 0;
+  flex-wrap: wrap; gap: 6px 14px;
+  max-width: 100%;
+  background: transparent; padding: 0;
+}
 
 /* chart hover furniture */
 .av-hover-guide { stroke: #c7cad1; stroke-width: 1; stroke-dasharray: 3 3; }
@@ -825,4 +834,21 @@
 @media (max-width: 560px) {
   .av-grid { grid-template-columns: 1fr; }
   .av-main { padding: 20px 16px 40px; }
+
+  /* report tile: the 40px side padding + fixed height starve the text at small
+     widths. Trim the padding, shrink the globe, and stack the cycle label above
+     its status chip so nothing overflows or collides. */
+  .av-report-tile { padding: 14px 16px; gap: 12px; height: auto; min-height: 96px; }
+  .av-report-globe { width: 60px; height: 84px; padding-top: 16px; }
+  .av-report-globe svg { width: 24px; height: 24px; }
+  .av-report-cycle-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .av-report-arrow { display: none; }
+
+  /* report page: collapse the timeline + body two-column grid, the highlights/gaps
+     grid, and let the stat row + action buttons wrap instead of overflowing. */
+  .av-rp-layout { grid-template-columns: 1fr; gap: 18px; }
+  .av-rp-timeline { position: static; flex-direction: row; flex-wrap: wrap; gap: 6px; }
+  .av-rp-grid { grid-template-columns: 1fr; gap: 20px; }
+  .av-rp-stat-row { flex-wrap: wrap; gap: 14px 24px; }
+  .av-rp-actions { flex-wrap: wrap; }
 }
