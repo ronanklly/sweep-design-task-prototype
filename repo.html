@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repo — Accelerating TTV in Act with AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github.min.css">
+<script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+<style>
+:root {
+  --primary: #283fff;
+  --primary-tint: #eef0ff;
+  --black: #000;
+  --text-subdued: #6e6e6e;
+  --disabled: #bdbdbd;
+  --border: #e0e0e0;
+  --surface-subdued: #f2f2f2;
+  --white: #fff;
+  --grass-500: #008113;
+  --crop-500: #9a6500;
+  --fire-500: #b81f00;
+  --fire-400: #ff4d2a;
+  --fire-100: #fce6e2;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --shadow-btn: 0 1px 2px rgba(0,0,0,.06);
+  --header-h: 67px;
+  --sidebar-w: 268px;
+  --pane-pad: 48px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--black);
+  background: #f2f2f2;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+h1,h2,h3,h4,h5,h6 { margin: 0; font-weight: 400; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; }
+button { font-family: var(--font); }
+
+/* ============================================================
+   HEADER
+============================================================ */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  background: #f9f9f9;
+  border-bottom: 1px solid var(--border);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+.header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-width: 0;
+}
+.header-title {
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--black);
+  white-space: nowrap;
+}
+.header-byline {
+  font-size: 12.5px;
+  color: var(--text-subdued);
+  white-space: nowrap;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--text-subdued);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color .12s, background .12s, color .12s;
+}
+.btn-icon:hover {
+  border-color: var(--text-subdued);
+}
+.btn-icon--active {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-tint);
+}
+.btn-icon--inactive {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* ============================================================
+   LAYOUT
+============================================================ */
+.repo-layout {
+  display: flex;
+  height: calc(100vh - var(--header-h));
+  margin-top: var(--header-h);
+  overflow: hidden;
+}
+
+/* ============================================================
+   SIDEBAR
+============================================================ */
+.repo-sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+  background: #f9f9f9;
+  padding: 20px 0 40px;
+}
+.sidebar-sections {
+  list-style: none;
+}
+.sidebar-section {
+  margin-bottom: 4px;
+}
+.sidebar-section-label {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 8px 20px 4px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--text-subdued);
+  cursor: pointer;
+}
+.sidebar-landing {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 6px 20px;
+  font-size: 13px;
+  color: var(--black);
+  cursor: pointer;
+  border-radius: 0;
+}
+.sidebar-landing:hover,
+.sidebar-landing.sidebar-item--active {
+  background: var(--surface-subdued);
+}
+.sidebar-landing.sidebar-item--active {
+  font-weight: 600;
+}
+.sidebar-files {
+  list-style: none;
+}
+.sidebar-file {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 5px 20px 5px 32px;
+  font-size: 13px;
+  color: var(--black);
+  cursor: pointer;
+}
+.sidebar-file:hover {
+  background: var(--surface-subdued);
+}
+.sidebar-file.sidebar-item--active {
+  font-weight: 600;
+}
+
+/* ============================================================
+   READING PANE
+============================================================ */
+.repo-pane {
+  flex: 1;
+  overflow-y: auto;
+  background: #fff;
+  position: relative;
+}
+.pane-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 14px var(--pane-pad);
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.pane-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+.pane-path {
+  font-family: 'SFMono-Regular', 'Consolas', 'Menlo', monospace;
+  font-size: 11px;
+  color: var(--text-subdued);
+}
+.pane-content {
+  padding: 36px var(--pane-pad) 80px;
+}
+
+/* ============================================================
+   LANDING PANE
+============================================================ */
+.landing-pane {
+  padding: 52px var(--pane-pad) 80px;
+  max-width: 680px;
+}
+.landing-pane p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--black);
+  margin-bottom: 1.2em;
+}
+.landing-pane strong {
+  font-weight: 600;
+}
+.landing-pane .landing-pointer {
+  margin-top: 32px;
+  padding: 20px 24px;
+  background: var(--surface-subdued);
+  border-radius: 8px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-subdued);
+}
+.landing-pane .landing-pointer strong {
+  color: var(--black);
+}
+
+/* ============================================================
+   MARKDOWN BODY
+============================================================ */
+.md-body {
+  max-width: 720px;
+}
+.md-body h1 {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 24px;
+}
+.md-body h2 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 2.4em;
+  margin-bottom: 10px;
+}
+.md-body h3 {
+  font-size: 14.5px;
+  font-weight: 600;
+  margin-top: 1.8em;
+  margin-bottom: 6px;
+}
+.md-body h4, .md-body h5 {
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-top: 1.4em;
+  margin-bottom: 4px;
+}
+.md-body p {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: .95em;
+}
+.md-body ul, .md-body ol {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: .95em;
+  padding-left: 1.6em;
+}
+.md-body li {
+  margin-bottom: .25em;
+}
+.md-body blockquote {
+  border-left: 2px solid var(--border);
+  padding-left: 18px;
+  margin: 1.4em 0;
+  color: var(--text-subdued);
+}
+.md-body blockquote p {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+.md-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 1.2em 0;
+}
+.md-body th {
+  background: var(--surface-subdued);
+  text-align: left;
+  padding: 8px 12px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.md-body td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.md-body code {
+  font-family: 'SFMono-Regular', 'Consolas', 'Menlo', monospace;
+  font-size: 0.85em;
+  background: var(--surface-subdued);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+.md-body pre {
+  background: var(--surface-subdued);
+  border-radius: 6px;
+  padding: 18px 20px;
+  overflow-x: auto;
+  margin: 1.2em 0;
+}
+.md-body pre code {
+  background: none;
+  padding: 0;
+  font-size: 12.5px;
+  border-radius: 0;
+}
+.md-body a {
+  color: var(--primary);
+}
+.md-body hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2em 0;
+}
+.md-body img {
+  max-width: 100%;
+}
+
+/* ============================================================
+   CODE PANE
+============================================================ */
+.code-wrap pre {
+  margin: 0;
+  border-radius: 6px;
+  padding: 24px;
+  font-size: 12.5px;
+  line-height: 1.65;
+  overflow-x: auto;
+  background: var(--surface-subdued) !important;
+}
+/* override hljs github theme background so it matches the site palette */
+.hljs {
+  background: var(--surface-subdued) !important;
+}
+
+/* ============================================================
+   JSON / TABLE PANE
+============================================================ */
+.table-toolbar {
+  margin-bottom: 16px;
+}
+.toggle-raw {
+  font-family: var(--font);
+  font-size: 12px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+  color: var(--text-subdued);
+  transition: border-color .12s, color .12s;
+}
+.toggle-raw:hover {
+  border-color: var(--text-subdued);
+  color: var(--black);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.data-table th {
+  background: var(--surface-subdued);
+  text-align: left;
+  padding: 9px 13px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.data-table td {
+  padding: 9px 13px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.td-headline {
+  max-width: 400px;
+  font-size: 12.5px;
+}
+.status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  flex-shrink: 0;
+}
+.status-cell {
+  white-space: nowrap;
+}
+.stats-cell {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  white-space: nowrap;
+}
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.5px;
+}
+
+/* ============================================================
+   ERROR STATE
+============================================================ */
+.pane-error {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--fire-500);
+  padding: 36px 0;
+  max-width: 560px;
+}
+.pane-error code {
+  font-family: 'SFMono-Regular', 'Consolas', 'Menlo', monospace;
+  font-size: 0.88em;
+}
+
+/* ============================================================
+   MOBILE
+============================================================ */
+@media (max-width: 700px) {
+  body { overflow: auto; }
+  .repo-layout {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+  .repo-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+  }
+  .repo-pane {
+    overflow-y: visible;
+  }
+  .pane-header {
+    padding: 12px 20px;
+    position: static;
+  }
+  .pane-content {
+    padding: 28px 20px 60px;
+  }
+  .landing-pane {
+    padding: 32px 20px 60px;
+  }
+  .header-byline { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-left">
+    <span class="header-title">Accelerating TTV in Act with AI</span>
+    <span class="header-byline">Ronan Kelly · September 2026</span>
+  </div>
+  <div class="header-right">
+    <a href="index.html" class="btn-icon" title="Prototype" aria-label="Return to prototype">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+        <polygon points="3,1 13,7 3,13"/>
+      </svg>
+    </a>
+    <button class="btn-icon btn-icon--active" aria-current="page" aria-label="Viewing code repository" title="Repo">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="4,5 1,7.5 4,10"/>
+        <polyline points="11,5 14,7.5 11,10"/>
+        <line x1="9" y1="3" x2="6" y2="12"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="repo-layout">
+  <nav class="repo-sidebar" id="repo-sidebar"></nav>
+  <main class="repo-pane" id="repo-pane"></main>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var manifest = null;
+
+  // ── Boot ─────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', function () {
+    fetch('repo-manifest.json')
+      .then(function (r) {
+        if (!r.ok) throw new Error('manifest ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        manifest = data;
+        buildSidebar(manifest);
+        render(window.location.hash.slice(1) || 'start');
+      })
+      .catch(function () {
+        document.getElementById('repo-sidebar').innerHTML =
+          '<p style="padding:20px;font-size:13px;color:var(--fire-500)">Couldn\'t load manifest. Serve the page over http(s), not file://.</p>';
+      });
+  });
+
+  window.addEventListener('hashchange', function () {
+    render(window.location.hash.slice(1) || 'start');
+  });
+
+  // ── Sidebar ───────────────────────────────────────────────────
+  function buildSidebar(mf) {
+    var nav = document.getElementById('repo-sidebar');
+    var ul = document.createElement('ul');
+    ul.className = 'sidebar-sections';
+
+    mf.sections.forEach(function (section) {
+      var li = document.createElement('li');
+      li.className = 'sidebar-section';
+
+      if (section.landing) {
+        var btn = document.createElement('button');
+        btn.className = 'sidebar-landing';
+        btn.dataset.id = 'start';
+        btn.textContent = section.title;
+        btn.addEventListener('click', function () {
+          window.location.hash = 'start';
+        });
+        li.appendChild(btn);
+      } else {
+        var label = document.createElement('button');
+        label.className = 'sidebar-section-label';
+        label.setAttribute('aria-expanded', 'true');
+        label.textContent = section.title;
+        label.addEventListener('click', function () {
+          var expanded = label.getAttribute('aria-expanded') === 'true';
+          label.setAttribute('aria-expanded', String(!expanded));
+          fileList.hidden = expanded;
+        });
+        li.appendChild(label);
+
+        var fileList = document.createElement('ul');
+        fileList.className = 'sidebar-files';
+
+        section.files.forEach(function (file) {
+          var fileLi = document.createElement('li');
+          var fileBtn = document.createElement('button');
+          fileBtn.className = 'sidebar-file';
+          fileBtn.dataset.id = file.id;
+          fileBtn.textContent = file.title;
+          fileBtn.addEventListener('click', function () {
+            window.location.hash = file.id;
+          });
+          fileLi.appendChild(fileBtn);
+          fileList.appendChild(fileLi);
+        });
+
+        li.appendChild(fileList);
+      }
+
+      ul.appendChild(li);
+    });
+
+    nav.appendChild(ul);
+  }
+
+  function updateSidebarActive(id) {
+    document.querySelectorAll('[data-id]').forEach(function (el) {
+      el.classList.toggle('sidebar-item--active', el.dataset.id === id);
+    });
+  }
+
+  // ── Routing ───────────────────────────────────────────────────
+  function render(id) {
+    updateSidebarActive(id);
+    if (id === 'start' || !id) {
+      renderLanding();
+      return;
+    }
+    var entry = findEntry(id);
+    if (!entry) {
+      renderLanding();
+      return;
+    }
+    renderEntry(entry);
+  }
+
+  function findEntry(id) {
+    if (!manifest) return null;
+    for (var i = 0; i < manifest.sections.length; i++) {
+      var section = manifest.sections[i];
+      if (section.files) {
+        for (var j = 0; j < section.files.length; j++) {
+          if (section.files[j].id === id) return section.files[j];
+        }
+      }
+    }
+    return null;
+  }
+
+  // ── Landing pane ──────────────────────────────────────────────
+  function renderLanding() {
+    var pane = document.getElementById('repo-pane');
+    pane.innerHTML = '';
+    var div = document.createElement('div');
+    div.className = 'landing-pane';
+    div.innerHTML = [
+      '<p>This is the working repository for the design task, rendered in place.',
+      ' Everything here is a real file fetched live from the same repo as the prototype',
+      ' you\'ve been looking at — not copy-pasted, not excerpted.</p>',
+      '<p>Six sections, ten files. The sidebar organises them by what they\'re for:',
+      ' how the project was run, the reasoning behind each call, where the design system',
+      ' grounding came from, how the mock dataset was built, and the spec-to-code trail',
+      ' that produced the prototype itself.</p>',
+      '<p>The sidebar is driven by a JSON manifest — adding, removing or reordering a file',
+      ' here is a manifest edit, not an HTML edit. The files themselves are fetched by',
+      ' relative path at runtime; nothing is duplicated or kept in sync by hand.</p>',
+      '<div class="landing-pointer">',
+      '<strong>Worth opening first</strong> — <strong>Decisions log</strong> has the full',
+      ' chronological trail: every real call, alternatives considered, why.',
+      ' <strong>Build brief</strong> is the literal spec <code>index.html</code> was built from.',
+      ' If someone has a minute, those two files show the most about how this was put together.',
+      '</div>'
+    ].join('');
+    pane.appendChild(div);
+  }
+
+  // ── Entry renderer ────────────────────────────────────────────
+  function renderEntry(entry) {
+    var pane = document.getElementById('repo-pane');
+    pane.innerHTML = '';
+    pane.scrollTop = 0;
+
+    var header = document.createElement('div');
+    header.className = 'pane-header';
+    header.innerHTML =
+      '<span class="pane-title">' + escHtml(entry.title) + '</span>' +
+      '<span class="pane-path">' + escHtml(entry.displayPath) + '</span>';
+    pane.appendChild(header);
+
+    var content = document.createElement('div');
+    content.className = 'pane-content';
+    pane.appendChild(content);
+
+    fetch(entry.path)
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      })
+      .then(function (text) {
+        if (entry.type === 'md') {
+          renderMarkdown(content, text);
+        } else if (entry.type === 'code') {
+          renderCode(content, text, entry.lang);
+        } else if (entry.type === 'table') {
+          renderTable(content, text, entry);
+        }
+      })
+      .catch(function () {
+        content.innerHTML =
+          '<p class="pane-error">Couldn\'t load <code>' + escHtml(entry.displayPath) + '</code>.' +
+          ' Check the page is being served over http(s), not opened via file://.</p>';
+      });
+  }
+
+  // ── Markdown renderer ─────────────────────────────────────────
+  function renderMarkdown(container, text) {
+    marked.use({ gfm: true, breaks: false });
+    container.innerHTML = '<div class="md-body">' + marked.parse(text) + '</div>';
+  }
+
+  // ── Code renderer ─────────────────────────────────────────────
+  function renderCode(container, text, lang) {
+    var highlighted = hljs.highlight(text, { language: lang }).value;
+    var wrap = document.createElement('div');
+    wrap.className = 'code-wrap';
+    var pre = document.createElement('pre');
+    var code = document.createElement('code');
+    code.className = 'hljs language-' + lang;
+    code.innerHTML = highlighted;
+    pre.appendChild(code);
+    wrap.appendChild(pre);
+    container.appendChild(wrap);
+  }
+
+  // ── Table renderer ────────────────────────────────────────────
+  function renderTable(container, rawText, entry) {
+    var data;
+    try {
+      data = JSON.parse(rawText);
+    } catch (e) {
+      container.innerHTML = '<p class="pane-error">Couldn\'t parse JSON.</p>';
+      return;
+    }
+
+    var rows = data[entry.rowsKey];
+    var tableHtml = entry.rowsKey === 'initiatives'
+      ? buildInitiativesTable(rows)
+      : buildReportsTable(rows);
+
+    var prettyJson = JSON.stringify(data, null, 2);
+    var highlighted = hljs.highlight(prettyJson, { language: 'json' }).value;
+
+    var toolbar = document.createElement('div');
+    toolbar.className = 'table-toolbar';
+
+    var toggle = document.createElement('button');
+    toggle.className = 'toggle-raw';
+    toggle.setAttribute('aria-pressed', 'false');
+    toggle.textContent = 'View raw JSON';
+    toolbar.appendChild(toggle);
+
+    var tableView = document.createElement('div');
+    tableView.className = 'table-view';
+    tableView.innerHTML = tableHtml;
+
+    var rawView = document.createElement('div');
+    rawView.className = 'table-raw';
+    rawView.hidden = true;
+    var rawPre = document.createElement('pre');
+    var rawCode = document.createElement('code');
+    rawCode.className = 'hljs language-json';
+    rawCode.innerHTML = highlighted;
+    rawPre.appendChild(rawCode);
+    rawView.appendChild(rawPre);
+
+    toggle.addEventListener('click', function () {
+      var pressed = toggle.getAttribute('aria-pressed') === 'true';
+      toggle.setAttribute('aria-pressed', String(!pressed));
+      toggle.textContent = pressed ? 'View raw JSON' : 'View table';
+      tableView.hidden = !pressed;
+      rawView.hidden = pressed;
+    });
+
+    container.appendChild(toolbar);
+    container.appendChild(tableView);
+    container.appendChild(rawView);
+  }
+
+  function buildInitiativesTable(rows) {
+    var headers = ['Initiative', 'Owner', 'Scope', 'Baseline→Target', 'Status'];
+    var rowsHtml = rows.map(function (r) {
+      var baseline = r.baseline !== undefined ? r.baseline.toLocaleString() : '—';
+      var target   = r.target   !== undefined ? r.target.toLocaleString()   : '—';
+      var unit     = r.unit || '';
+      var num      = baseline + ' → ' + target + (unit ? ' ' + unit : '');
+      return '<tr>' +
+        '<td>' + escHtml(r.shortName || r.name) + '</td>' +
+        '<td>' + escHtml(r.owner ? r.owner.name : '—') + '</td>' +
+        '<td>' + escHtml(r.scope || '—') + '</td>' +
+        '<td style="white-space:nowrap">' + num + '</td>' +
+        '<td class="status-cell">' + statusDot(r.status) + '</td>' +
+        '</tr>';
+    }).join('');
+    return '<table class="data-table">' +
+      '<thead><tr>' + headers.map(function (h) { return '<th>' + h + '</th>'; }).join('') + '</tr></thead>' +
+      '<tbody>' + rowsHtml + '</tbody>' +
+      '</table>';
+  }
+
+  function buildReportsTable(rows) {
+    var headers = ['Month', 'Headline', 'On track / At risk / Stalled', 'Generated by'];
+    var rowsHtml = rows.map(function (r) {
+      var s = r.stats || {};
+      var statsHtml =
+        '<div class="stats-cell">' +
+        '<span class="stat-item"><span class="status-dot" style="background:var(--grass-500)"></span>' + (s.onTrack !== undefined ? s.onTrack : '—') + '</span>' +
+        '<span class="stat-item"><span class="status-dot" style="background:var(--crop-500)"></span>'  + (s.atRisk  !== undefined ? s.atRisk  : '—') + '</span>' +
+        '<span class="stat-item"><span class="status-dot" style="background:var(--fire-500)"></span>'  + (s.stalled !== undefined ? s.stalled : '—') + '</span>' +
+        '</div>';
+      return '<tr>' +
+        '<td style="white-space:nowrap">' + escHtml(r.label || '—') + '</td>' +
+        '<td class="td-headline">' + escHtml(r.headline || '—') + '</td>' +
+        '<td>' + statsHtml + '</td>' +
+        '<td>' + escHtml(r.generatedBy || '—') + '</td>' +
+        '</tr>';
+    }).join('');
+    return '<table class="data-table">' +
+      '<thead><tr>' + headers.map(function (h) { return '<th>' + h + '</th>'; }).join('') + '</tr></thead>' +
+      '<tbody>' + rowsHtml + '</tbody>' +
+      '</table>';
+  }
+
+  function statusDot(status) {
+    var map = {
+      'on_track': { color: 'var(--grass-500)', label: 'On track' },
+      'at_risk':  { color: 'var(--crop-500)',  label: 'At risk'  },
+      'stalled':  { color: 'var(--fire-500)',  label: 'Stalled'  }
+    };
+    var s = map[status] || { color: 'var(--text-subdued)', label: status || '—' };
+    return '<span class="status-dot" style="background:' + s.color + '"></span>' + s.label;
+  }
+
+  // ── Util ──────────────────────────────────────────────────────
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+}());
+</script>
+</body>
+</html>

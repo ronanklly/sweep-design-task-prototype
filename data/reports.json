@@ -1,0 +1,385 @@
+{
+  "company": "Solandra Telecom",
+  "lead": {
+    "name": "Meera Chandra",
+    "role": "Head of Sustainability"
+  },
+  "reports": [
+    {
+      "id": "2026-09",
+      "label": "Sep 2026",
+      "month": 9,
+      "year": 2026,
+      "generatedBy": "Sweepy",
+      "generatedAt": "2026-09-12T07:30:00+01:00",
+      "needsReview": true,
+      "headline": "147,307 tCO2e tracked in Sep 2026 — 4.9% above this year's internal target",
+      "summary": "15 active initiatives against the 2023-2030 reduction pathway. 5 on track, 7 at risk, 3 stalled. 3 initiatives have not reported this cycle and are flagged rather than assumed.",
+      "stats": {
+        "total": 15,
+        "onTrack": 5,
+        "atRisk": 7,
+        "stalled": 3,
+        "dataOverdue": 3
+      },
+      "highlights": [
+        {
+          "initiativeId": "business-travel",
+          "name": "Business travel reduction",
+          "shortName": "Cut business travel emissions",
+          "note": "3.0% ahead of target, owned by Tom Radley."
+        },
+        {
+          "initiativeId": "backup-power-transition",
+          "name": "Backup power diesel-to-battery transition",
+          "shortName": "Replace diesel backup with batteries",
+          "note": "2.0% ahead of target, owned by Rohan Desai."
+        },
+        {
+          "initiativeId": "datacentre-cooling",
+          "name": "Data centre cooling optimisation",
+          "shortName": "Cool data centres efficiently",
+          "note": "1.5% ahead of target, owned by Marcus Webb."
+        }
+      ],
+      "gaps": [
+        {
+          "initiativeId": "offgrid-solar",
+          "name": "Off-grid cell tower solar & battery",
+          "shortName": "Take remote towers off diesel",
+          "owner": "Daniel Osiel",
+          "note": "Daniel replied this morning citing a resolved permit delay for REMOTE-1329 — Sweepy's proposed update (stalled → at risk) is still awaiting his confirmation."
+        },
+        {
+          "initiativeId": "handset-takeback",
+          "name": "Handset take-back & circular refurbishment",
+          "shortName": "Keep devices in circulation longer",
+          "owner": "Yuki Tanaka",
+          "note": "Yuki replied this morning: their refurbishment partner's warehouse move has paused intake, no reopening date yet — status stays unconfirmed."
+        },
+        {
+          "initiativeId": "sustainable-packaging",
+          "name": "Sustainable packaging for devices & SIM kits",
+          "shortName": "Cut packaging carbon",
+          "owner": "Sam Okafor",
+          "note": "Sam replied this morning: the packaging supplier failed a compliance retest — status stays unconfirmed."
+        }
+      ]
+    },
+    {
+      "id": "2026-08",
+      "label": "Aug 2026",
+      "month": 8,
+      "year": 2026,
+      "generatedBy": "Sweepy",
+      "generatedAt": "2026-08-10T07:30:00+01:00",
+      "needsReview": false,
+      "headline": "152,163 tCO2e tracked in Aug 2026 — 6.2% above this year's internal target",
+      "summary": "15 active initiatives tracked. Overall emissions 6.2% above the internal target for the month. The same three initiatives remain unconfirmed for a second or third straight cycle — stale stays visibly stale, nothing smoothed over.",
+      "stats": {
+        "total": 15,
+        "onTrack": 4,
+        "atRisk": 8,
+        "stalled": 3,
+        "dataOverdue": 3
+      },
+      "reviewedBy": "Meera Chandra",
+      "reviewedAt": "2026-09-04",
+      "highlights": [
+        {
+          "initiativeId": "business-travel",
+          "name": "Business travel reduction",
+          "shortName": "Cut business travel emissions",
+          "note": "3.4% ahead of target, owned by Tom Radley."
+        },
+        {
+          "initiativeId": "datacentre-cooling",
+          "name": "Data centre cooling optimisation",
+          "shortName": "Cool data centres efficiently",
+          "note": "2.0% ahead of target, owned by Marcus Webb."
+        },
+        {
+          "initiativeId": "backup-power-transition",
+          "name": "Backup power diesel-to-battery transition",
+          "shortName": "Replace diesel backup with batteries",
+          "note": "1.8% ahead of target, owned by Rohan Desai."
+        }
+      ],
+      "gaps": [
+        {
+          "initiativeId": "offgrid-solar",
+          "name": "Off-grid cell tower solar & battery",
+          "shortName": "Take remote towers off diesel",
+          "owner": "Daniel Osiel",
+          "note": "No confirmed status this cycle — Sweepy has followed up three times; the customs delay is now the oldest open flag in the programme."
+        },
+        {
+          "initiativeId": "handset-takeback",
+          "name": "Handset take-back & circular refurbishment",
+          "shortName": "Keep devices in circulation longer",
+          "owner": "Yuki Tanaka",
+          "note": "No confirmed status this cycle, third month running."
+        },
+        {
+          "initiativeId": "sustainable-packaging",
+          "name": "Sustainable packaging for devices & SIM kits",
+          "shortName": "Cut packaging carbon",
+          "owner": "Sam Okafor",
+          "note": "No confirmed status this cycle, second month running."
+        }
+      ]
+    },
+    {
+      "id": "2026-07",
+      "label": "Jul 2026",
+      "month": 7,
+      "year": 2026,
+      "generatedBy": "Sweepy",
+      "generatedAt": "2026-07-10T07:30:00+01:00",
+      "needsReview": false,
+      "headline": "156,034 tCO2e tracked in Jul 2026 — 6.8% above this year's internal target",
+      "summary": "15 active initiatives tracked. Overall emissions 6.8% above the internal target — a step back from June, driven by one initiative slipping from on track to at risk. Two initiatives are now two cycles overdue.",
+      "stats": {
+        "total": 15,
+        "onTrack": 4,
+        "atRisk": 8,
+        "stalled": 3,
+        "dataOverdue": 4
+      },
+      "reviewedBy": "Meera Chandra",
+      "reviewedAt": "2026-08-05",
+      "highlights": [
+        {
+          "initiativeId": "renewable-ppa",
+          "name": "Renewable electricity PPA — network estate",
+          "shortName": "Power the network on renewables",
+          "note": "2.9% ahead of target, owned by Sofia Alvarez."
+        },
+        {
+          "initiativeId": "backup-power-transition",
+          "name": "Backup power diesel-to-battery transition",
+          "shortName": "Replace diesel backup with batteries",
+          "note": "2.2% ahead of target, owned by Rohan Desai."
+        },
+        {
+          "initiativeId": "network-site-efficiency",
+          "name": "Network site energy efficiency",
+          "shortName": "Cut network site energy use",
+          "note": "1.4% ahead of target, owned by Priya Nair."
+        }
+      ],
+      "gaps": [
+        {
+          "initiativeId": "offgrid-solar",
+          "name": "Off-grid cell tower solar & battery",
+          "shortName": "Take remote towers off diesel",
+          "owner": "Daniel Osiel",
+          "note": "No confirmed status this cycle — Sweepy has followed up twice; the customs delay flagged in June has not resolved."
+        },
+        {
+          "initiativeId": "handset-takeback",
+          "name": "Handset take-back & circular refurbishment",
+          "shortName": "Keep devices in circulation longer",
+          "owner": "Yuki Tanaka",
+          "note": "No confirmed status this cycle, second month running."
+        },
+        {
+          "initiativeId": "sustainable-packaging",
+          "name": "Sustainable packaging for devices & SIM kits",
+          "shortName": "Cut packaging carbon",
+          "owner": "Sam Okafor",
+          "note": "No confirmed status this cycle — flagged for the first time."
+        }
+      ]
+    },
+    {
+      "id": "2026-06",
+      "label": "Jun 2026",
+      "month": 6,
+      "year": 2026,
+      "generatedBy": "Sweepy",
+      "generatedAt": "2026-06-10T07:30:00+01:00",
+      "needsReview": false,
+      "headline": "158,340 tCO2e tracked in Jun 2026 — 6.3% above this year's internal target",
+      "summary": "15 active initiatives tracked. Overall emissions 6.3% above the internal target for the month — the best month yet. The supply-chain stall from April and May has resolved.",
+      "stats": {
+        "total": 15,
+        "onTrack": 5,
+        "atRisk": 7,
+        "stalled": 3,
+        "dataOverdue": 3
+      },
+      "reviewedBy": "Meera Chandra",
+      "reviewedAt": "2026-07-06",
+      "highlights": [
+        {
+          "initiativeId": "supplier-engagement",
+          "name": "Network equipment supplier engagement",
+          "shortName": "Decarbonise the equipment supply chain",
+          "note": "Resolved a two-month stall after direct outreach — back on track, owned by Ben Fitzgerald."
+        },
+        {
+          "initiativeId": "business-travel",
+          "name": "Business travel reduction",
+          "shortName": "Cut business travel emissions",
+          "note": "3.1% ahead of target, owned by Tom Radley."
+        },
+        {
+          "initiativeId": "datacentre-cooling",
+          "name": "Data centre cooling optimisation",
+          "shortName": "Cool data centres efficiently",
+          "note": "1.9% ahead of target, owned by Marcus Webb."
+        }
+      ],
+      "gaps": [
+        {
+          "initiativeId": "offgrid-solar",
+          "name": "Off-grid cell tower solar & battery",
+          "shortName": "Take remote towers off diesel",
+          "owner": "Daniel Osiel",
+          "note": "No confirmed status this cycle — Sweepy has followed up once."
+        },
+        {
+          "initiativeId": "handset-takeback",
+          "name": "Handset take-back & circular refurbishment",
+          "shortName": "Keep devices in circulation longer",
+          "owner": "Yuki Tanaka",
+          "note": "No confirmed status this cycle — flagged for the first time."
+        },
+        {
+          "initiativeId": "cloud-migration",
+          "name": "Cloud & hosting migration to renewable providers",
+          "shortName": "Move workloads to clean cloud",
+          "owner": "Liam O'Connor",
+          "note": "Data submitted but not yet processed — moved from stalled to awaiting data."
+        }
+      ]
+    },
+    {
+      "id": "2026-05",
+      "label": "May 2026",
+      "month": 5,
+      "year": 2026,
+      "generatedBy": "Sweepy",
+      "generatedAt": "2026-05-10T07:30:00+01:00",
+      "needsReview": false,
+      "headline": "161,806 tCO2e tracked in May 2026 — 6.6% above this year's internal target",
+      "summary": "15 active initiatives tracked. Overall emissions 6.6% above the internal target for the month. One fewer initiative stalled than April, but a new gap has opened at an off-grid site.",
+      "stats": {
+        "total": 15,
+        "onTrack": 4,
+        "atRisk": 7,
+        "stalled": 4,
+        "dataOverdue": 4
+      },
+      "reviewedBy": "Meera Chandra",
+      "reviewedAt": "2026-06-08",
+      "highlights": [
+        {
+          "initiativeId": "business-travel",
+          "name": "Business travel reduction",
+          "shortName": "Cut business travel emissions",
+          "note": "2.8% ahead of target, owned by Tom Radley."
+        },
+        {
+          "initiativeId": "renewable-ppa",
+          "name": "Renewable electricity PPA — network estate",
+          "shortName": "Power the network on renewables",
+          "note": "3.1% ahead of target, owned by Sofia Alvarez."
+        },
+        {
+          "initiativeId": "backup-power-transition",
+          "name": "Backup power diesel-to-battery transition",
+          "shortName": "Replace diesel backup with batteries",
+          "note": "1.6% ahead of target, owned by Rohan Desai."
+        }
+      ],
+      "gaps": [
+        {
+          "initiativeId": "supplier-engagement",
+          "name": "Network equipment supplier engagement",
+          "shortName": "Decarbonise the equipment supply chain",
+          "owner": "Ben Fitzgerald",
+          "note": "Still no confirmed status — Sweepy's first follow-up this cycle."
+        },
+        {
+          "initiativeId": "offgrid-solar",
+          "name": "Off-grid cell tower solar & battery",
+          "shortName": "Take remote towers off diesel",
+          "owner": "Daniel Osiel",
+          "note": "No confirmed status this cycle — flagged for the first time."
+        },
+        {
+          "initiativeId": "cloud-migration",
+          "name": "Cloud & hosting migration to renewable providers",
+          "shortName": "Move workloads to clean cloud",
+          "owner": "Liam O'Connor",
+          "note": "Still behind schedule; no confirmed status this cycle."
+        }
+      ]
+    },
+    {
+      "id": "2026-04",
+      "label": "Apr 2026",
+      "month": 4,
+      "year": 2026,
+      "generatedBy": "Sweepy",
+      "generatedAt": "2026-04-10T07:30:00+01:00",
+      "needsReview": false,
+      "headline": "165,965 tCO2e tracked in Apr 2026 — 7.4% above this year's internal target",
+      "summary": "First full month on the new tracker. 15 active initiatives against the 2023-2030 reduction pathway: 3 on track, 7 at risk, 5 stalled. Five initiatives have not reported this cycle — the baseline this series will be measured against.",
+      "stats": {
+        "total": 15,
+        "onTrack": 3,
+        "atRisk": 7,
+        "stalled": 5,
+        "dataOverdue": 5
+      },
+      "reviewedBy": "Meera Chandra",
+      "reviewedAt": "2026-05-07",
+      "highlights": [
+        {
+          "initiativeId": "renewable-ppa",
+          "name": "Renewable electricity PPA — network estate",
+          "shortName": "Power the network on renewables",
+          "note": "3.4% ahead of target, owned by Sofia Alvarez."
+        },
+        {
+          "initiativeId": "datacentre-cooling",
+          "name": "Data centre cooling optimisation",
+          "shortName": "Cool data centres efficiently",
+          "note": "2.1% ahead of target, owned by Marcus Webb."
+        },
+        {
+          "initiativeId": "network-site-efficiency",
+          "name": "Network site energy efficiency",
+          "shortName": "Cut network site energy use",
+          "note": "1.2% ahead of target, owned by Priya Nair."
+        }
+      ],
+      "gaps": [
+        {
+          "initiativeId": "supplier-engagement",
+          "name": "Network equipment supplier engagement",
+          "shortName": "Decarbonise the equipment supply chain",
+          "owner": "Ben Fitzgerald",
+          "note": "No confirmed status this cycle — ownership only assigned last month, engagement not yet under way."
+        },
+        {
+          "initiativeId": "cloud-migration",
+          "name": "Cloud & hosting migration to renewable providers",
+          "shortName": "Move workloads to clean cloud",
+          "owner": "Liam O'Connor",
+          "note": "Migration behind schedule; no confirmed status this cycle."
+        },
+        {
+          "initiativeId": "capital-goods-network-build",
+          "name": "Low-carbon network build standard",
+          "shortName": "Build the network low-carbon by design",
+          "owner": "Ella Whitfield",
+          "note": "Awaiting data — design phase, nothing measurable to report yet."
+        }
+      ]
+    }
+  ]
+}

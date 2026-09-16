@@ -1,0 +1,49 @@
+{
+  "sections": [
+    {
+      "id": "start",
+      "title": "Start here",
+      "landing": true
+    },
+    {
+      "id": "how-we-worked",
+      "title": "How we worked",
+      "files": [
+        { "id": "north-star",    "title": "North Star",  "path": "../../md/NORTH-STAR.md",              "displayPath": "md/NORTH-STAR.md",                        "type": "md" },
+        { "id": "site-plan",     "title": "Site plan",   "path": "../md/site-structure.md",              "displayPath": "design-task/md/site-structure.md",        "type": "md" }
+      ]
+    },
+    {
+      "id": "process",
+      "title": "Process & reasoning",
+      "files": [
+        { "id": "process",       "title": "Process",       "path": "../md/01-process.md",                "displayPath": "design-task/md/01-process.md",            "type": "md" },
+        { "id": "decisions-log", "title": "Decisions log", "path": "../md/decisions-log.md",             "displayPath": "design-task/md/decisions-log.md",         "type": "md" }
+      ]
+    },
+    {
+      "id": "grounding",
+      "title": "Grounding",
+      "files": [
+        { "id": "visual-language", "title": "Visual language", "path": "../../research/md/visual-language.md",  "displayPath": "research/md/visual-language.md",  "type": "md" }
+      ]
+    },
+    {
+      "id": "data-layer",
+      "title": "The data layer",
+      "files": [
+        { "id": "generator",   "title": "Generator",   "path": "data/generate_data.py",   "displayPath": "design-task/prototype/data/generate_data.py",  "type": "code",  "lang": "python" },
+        { "id": "initiatives", "title": "Initiatives", "path": "data/initiatives.json",   "displayPath": "design-task/prototype/data/initiatives.json",  "type": "table", "rowsKey": "initiatives" },
+        { "id": "reports",     "title": "Reports",     "path": "data/reports.json",       "displayPath": "design-task/prototype/data/reports.json",      "type": "table", "rowsKey": "reports" }
+      ]
+    },
+    {
+      "id": "spec-to-code",
+      "title": "Spec → code",
+      "files": [
+        { "id": "build-brief", "title": "Build brief", "path": "../md/build-brief.md",   "displayPath": "design-task/md/build-brief.md",                "type": "md" },
+        { "id": "the-shell",   "title": "The shell",   "path": "index.html",             "displayPath": "design-task/prototype/index.html",             "type": "code", "lang": "html" }
+      ]
+    }
+  ]
+}

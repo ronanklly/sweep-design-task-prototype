@@ -1,0 +1,19 @@
+{
+  "company": "Solandra Telecom",
+  "unit": "tCO2e",
+  "year": 2026,
+  "monthly": [
+    { "month": 1,  "label": "Jan", "target": 167200, "actual": 183100, "forecast": null,   "delta": 15900 },
+    { "month": 2,  "label": "Feb", "target": 162700, "actual": 177000, "forecast": null,   "delta": 14300 },
+    { "month": 3,  "label": "Mar", "target": 156400, "actual": 167500, "forecast": null,   "delta": 11100 },
+    { "month": 4,  "label": "Apr", "target": 152200, "actual": 160400, "forecast": null,   "delta": 8200  },
+    { "month": 5,  "label": "May", "target": 150000, "actual": 159000, "forecast": null,   "delta": 9000  },
+    { "month": 6,  "label": "Jun", "target": 149400, "actual": 156300, "forecast": null,   "delta": 6900  },
+    { "month": 7,  "label": "Jul", "target": 148600, "actual": 158700, "forecast": null,   "delta": 10100 },
+    { "month": 8,  "label": "Aug", "target": 145000, "actual": 153600, "forecast": null,   "delta": 8600  },
+    { "month": 9,  "label": "Sep", "target": 138100, "actual": 143500, "forecast": null,   "delta": 5400  },
+    { "month": 10, "label": "Oct", "target": 134500, "actual": null,   "forecast": 139900, "delta": 5400  },
+    { "month": 11, "label": "Nov", "target": 134400, "actual": null,   "forecast": 138700, "delta": 4300  },
+    { "month": 12, "label": "Dec", "target": 134600, "actual": null,   "forecast": 137400, "delta": 2800  }
+  ]
+}

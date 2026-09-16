@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From spreadsheets to sustained accountability</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/act-view.css?v=fc18">
+<style>
+:root {
+  --primary: #283fff;
+  --primary-tint: #eef0ff;
+  --black: #000;
+  --text-subdued: #6e6e6e;
+  --disabled: #bdbdbd;
+  --border: #e0e0e0;
+  --surface-subdued: #f2f2f2;
+  --white: #fff;
+  --grass-500: #008113;
+  --crop-500: #9a6500;
+  --fire-500: #b81f00;
+  --fire-400: #ff4d2a;
+  --fire-100: #fce6e2;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --shadow-btn: 0 1px 2px rgba(0,0,0,.06);
+  --shadow-pop: 0 16px 40px rgba(0,0,0,.10), 0 2px 8px rgba(0,0,0,.05);
+  --header-h: 67px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--black);
+  background: #f2f2f2;
+  -webkit-font-smoothing: antialiased;
+  padding-top: var(--header-h);
+}
+h1,h2,h3,h4,h5,h6 { margin: 0; font-weight: 400; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; }
+
+/* ============================================================
+   STICKY HEADER
+============================================================ */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  background: #f9f9f9;
+  border-bottom: 1px solid var(--border);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+.header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-width: 0;
+}
+.header-title {
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--black);
+  white-space: nowrap;
+}
+.header-byline {
+  font-size: 12.5px;
+  color: var(--text-subdued);
+  white-space: nowrap;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--text-subdued);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  transition: border-color .12s, background .12s, color .12s;
+}
+.btn-icon--active {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-tint);
+}
+.btn-icon--inactive {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* ============================================================
+   SECTION RHYTHM
+============================================================ */
+.section {
+  padding: 120px 120px 120px;
+}
+.section-heading {
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 400;
+  margin-bottom: 48px;
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-subdued);
+}
+
+/* ============================================================
+   HERO — 100vh, header is additive on top
+============================================================ */
+.section-hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 120px;
+  padding-right: 120px;
+  overflow: hidden;
+}
+.hero-eyebrow {
+  margin-bottom: 20px;
+}
+.hero-h1 {
+  font-size: clamp(36px, 4vw, 58px);
+  line-height: 1.3;
+  font-weight: 400;
+  max-width: 860px;
+}
+.hero-h1 em {
+  font-style: italic;
+}
+.hero-br { display: block; }
+@media (max-width: 960px) { .hero-br { display: none; } }
+
+/* ============================================================
+   ANALYSIS SECTION
+============================================================ */
+.steps-grid {
+  display: grid;
+  grid-template-columns: 136px 1fr;
+  gap: 10px 20px;
+  align-items: stretch;
+}
+
+/* Swimlane blocks */
+.swim-block {
+  border-radius: 10px;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.swim-block--once {
+  background: #1c1c1e;
+  color: var(--white);
+}
+.swim-block--repeat {
+  background: var(--fire-500);
+  color: var(--white);
+}
+.swim-label {
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  opacity: .85;
+  margin-bottom: 8px;
+}
+.swim-subs {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.swim-sub {
+  background: rgba(255,255,255,.13);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,.9);
+  display: flex;
+  align-items: center;
+}
+.swim-sub--1 { flex: 1; }
+.swim-sub--2 { flex: 2; }
+.swim-sub--3 { flex: 3; }
+.swim-sub--sustain {
+  background: var(--fire-100);
+  color: var(--fire-500);
+}
+
+/* Step list */
+.step-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.step-row {
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--white);
+}
+.step-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--surface-subdued);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 400;
+  flex: none;
+}
+.step-title {
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+.step-desc {
+  font-size: 12.5px;
+  color: var(--text-subdued);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+.step-effort {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  flex: none;
+}
+.effort-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-subdued);
+}
+.effort-dots {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+.ed {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.ed-empty { background: var(--disabled); }
+
+/* Chart */
+.chart-section { margin-top: 48px; }
+.chart-heading {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+.chart-caption {
+  font-size: 12px;
+  color: var(--text-subdued);
+  margin-top: 12px;
+  font-style: italic;
+}
+.emotion-chart { width: 100%; height: auto; display: block; overflow: visible; }
+
+/* ============================================================
+   REFRAME SECTION
+============================================================ */
+.stage-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.stage-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 40px;
+  background: var(--white);
+}
+.stage-card--sustain {
+  border-color: var(--primary);
+  border-width: 2px;
+}
+.card-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .02em;
+  align-self: flex-start;
+}
+.card-tag--wireframe {
+  background: var(--surface-subdued);
+  color: var(--text-subdued);
+}
+.card-tag--prototyped {
+  background: var(--primary-tint);
+  color: var(--primary);
+}
+.card-title {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+.card-title--sustain { color: var(--primary); }
+.card-desc {
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--black);
+}
+.card-caption {
+  font-size: 14px;
+  color: var(--text-subdued);
+  line-height: 1.4;
+  margin-top: 26px; /* flex gap(14px) + 26px = 40px from description */
+}
+.accel-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 1;
+}
+.accel-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.accel-list li .icon { flex: none; line-height: 1.5; }
+.card-fragment {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 260px;
+  margin-top: 6px; /* flex gap(14px) + 6px = 20px from accel-list */
+}
+.card-fragment img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.btn-view-proto {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: auto;
+  transition: filter .12s;
+}
+.btn-view-proto:hover { filter: brightness(1.12); }
+
+/* ============================================================
+   BROWSER CHROME CONTAINER
+============================================================ */
+.section-prototype {
+  /* wider L/R padding narrows the browser; tighter top/bottom gives it more height */
+  padding: calc(var(--header-h) + 24px) 100px 24px;
+}
+.browser-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #c7cad1;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-pop), 0 0 30px rgba(0, 0, 0, 0.15);
+  height: calc(100vh - var(--header-h) - 48px);
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  .browser-container {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+.browser-chrome-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: #ececee;
+  border-bottom: 1px solid #d5d7db;
+}
+.traffic-lights { display: flex; gap: 7px; flex: none; }
+.tdot {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.tdot-r { background: #ff5f56; }
+.tdot-y { background: #ffbd2e; }
+.tdot-g { background: #27c93f; }
+.chrome-divider { width: 1px; height: 16px; background: #d5d7db; flex: none; }
+.chrome-nav-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: #8a8d93;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex: none;
+}
+.chrome-url-bar {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 1px solid #d5d7db;
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 12px;
+  color: var(--text-subdued);
+  font-family: var(--font);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.chrome-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+  color: #8a8d93;
+}
+.chrome-action-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: #8a8d93;
+  font-size: 14px;
+  cursor: default;
+}
+.browser-body-placeholder {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  background: #f6f6f7;
+  width: 100%;
+}
+
+/* Tighten the gap between analysis and reframe sections to half */
+#section-analysis { padding-bottom: 60px; }
+#section-reframe  { padding-top: 60px; }
+
+/* Analysis image — cancel the section's horizontal padding so only the
+   image's own internal whitespace acts as the visual margin */
+.analysis-img {
+  display: block;
+  width: calc(100% + 240px);
+  margin-left: -120px;
+}
+.section-img {
+  display: block;
+  width: 100%;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 1200px) {
+  .section { padding: 80px 60px 80px; }
+  .section-hero { padding-left: 60px; padding-right: 60px; }
+  .analysis-img { width: calc(100% + 120px); margin-left: -60px; }
+}
+@media (max-width: 960px) {
+  .section { padding: 60px 32px 60px; }
+  .analysis-img { width: calc(100% + 64px); margin-left: -32px; }
+  .section-hero { padding-left: 32px; padding-right: 32px; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .swim-block { display: none; }
+}
+@media (max-width: 700px) {
+  .stage-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .header-byline { display: none; }
+  .header-title { font-size: 12.5px; }
+  .analysis-img { width: calc(100% + 40px); margin-left: -20px; }
+  .section { padding: 48px 20px 48px; }
+  .section-hero { padding-left: 20px; padding-right: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     STICKY HEADER
+============================================================ -->
+<header class="site-header">
+  <div class="header-left">
+    <span class="header-title">Accelerating TTV in Act with AI</span>
+    <span class="header-byline">Ronan Kelly · September 2026</span>
+  </div>
+  <div class="header-right">
+    <button class="btn-icon btn-icon--active" id="btn-play" aria-label="Scroll to top">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+        <polygon points="3,1 13,7 3,13"/>
+      </svg>
+    </button>
+    <a href="repo.html" class="btn-icon" title="Repo" aria-label="View code repository">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="4,5 1,7.5 4,10"/>
+        <polyline points="11,5 14,7.5 11,10"/>
+        <line x1="9" y1="3" x2="6" y2="12"/>
+      </svg>
+    </a>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="section-hero">
+  <p class="eyebrow hero-eyebrow">AI-accelerated workflow</p>
+  <h1 class="hero-h1">Simplifying the Act flow and accelerating TTV with the help<br class="hero-br"> of Sweepy</h1>
+</section>
+
+<!-- ============================================================
+     ANALYSIS OF THE ORIGINAL FLOW
+============================================================ -->
+<section class="section" id="section-analysis">
+  <h2 class="section-heading">Analysis of the original flow and where it hurts</h2>
+  <img src="build%20images/Swimlanes.svg" alt="Analysis of the original flow — swimlane and step list" class="section-img">
+
+  <div class="steps-grid" style="display:none">
+
+    <!-- Swimlane — Once per cycle (steps 1–4) -->
+    <div class="swim-block swim-block--once">
+      <div class="swim-label">Once per cycle</div>
+      <div class="swim-subs">
+        <div class="swim-sub swim-sub--1">Drafting</div>
+        <div class="swim-sub swim-sub--2">Aligning</div>
+        <div class="swim-sub swim-sub--1">Assigning</div>
+      </div>
+    </div>
+
+    <!-- Steps 1–4 -->
+    <div class="step-col">
+      <div class="step-row">
+        <span class="step-num">1</span>
+        <div>
+          <div class="step-title">Draft actions from interviews</div>
+          <div class="step-desc">Lead drafts candidate actions in a spreadsheet from stakeholder interviews</div>
+        </div>
+        <div class="step-effort">
+          <span class="effort-label">Effort</span>
+          <div class="effort-dots">
+            <span class="ed" style="background:var(--crop-500)"></span>
+            <span class="ed" style="background:var(--crop-500)"></span>
+            <span class="ed" style="background:var(--crop-500)"></span>
+            <span class="ed ed-empty"></span>
+            <span class="ed ed-empty"></span>
+          </div>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-num">2</span>
+        <div>
+          <div class="step-title">Circulate for review</div>
+          <div class="step-desc">Lead emails the spreadsheet to 5–6 stakeholders for review and comment</div>
+        </div>
+        <div class="step-effort">
+          <span class="effort-label">Effort</span>
+          <div class="effort-dots">
+            <span class="ed" style="background:var(--grass-500)"></span>
+            <span class="ed" style="background:var(--grass-500)"></span>
+            <span class="ed ed-empty"></span>
+            <span class="ed ed-empty"></span>
+            <span class="ed ed-empty"></span>
+          </div>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-num">3</span>
+        <div>
+          <div class="step-title">Consolidate &amp; finalise list</div>
+          <div class="step-desc">Lead consolidates feedback and finalises ~15 actions</div>
+        </div>
+        <div class="step-effort">
+          <span class="effort-label">Effort</span>
+          <div class="effort-dots">
+            <span class="ed" style="background:var(--crop-500)"></span>
+            <span class="ed" style="background:var(--crop-500)"></span>
+            <span class="ed" style="background:var(--crop-500)"></span>
+            <span class="ed ed-empty"></span>
+            <span class="ed ed-empty"></span>
+          </div>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-num">4</span>
+        <div>
+          <div class="step-title">Assign owners</div>
+          <div class="step-desc">Lead assigns owners by emailing each person individually</div>
+        </div>
+        <div class="step-effort">
+          <span class="effort-label">Effort</span>
+          <div class="effort-dots">
+            <span class="ed" style="background:var(--grass-500)"></span>
+            <span class="ed" style="background:var(--grass-500)"></span>
+            <span class="ed ed-empty"></span>
+            <span class="ed ed-empty"></span>
+            <span class="ed ed-empty"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Swimlane — Every month, indefinitely (steps 5–7) -->
+    <div class="swim-block swim-block--repeat">
+      <div class="swim-label">Every month, indefinitely</div>
+      <div class="swim-subs">
+        <div class="swim-sub swim-sub--3 swim-sub--sustain">Sustaining</div>
+      </div>
+    </div>
+
+    <!-- Steps 5–7 -->
+    <div class="step-col">
+      <div class="step-row">
+        <span class="step-num">5</span>
+        <div>
+          <div class="step-title">Owners update monthly</div>
+          <div class="step-desc">Each owner updates progress monthly on a central spreadsheet</div>
+        </div>
+        <div class="step-effort">
+          <span class="effort-label">Effort</span>
+          <div class="effort-dots">
+            <span class="ed" style="background:var(--grass-500)"></span>
+            <span class="ed" style="background:var(--grass-500)"></span>
+            <span class="ed ed-empty"></span>
+            <span class="ed ed-empty"></span>
+            <span class="ed ed-empty"></span>
+          </div>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-num">6</span>
+        <div>
+          <div class="step-title">Chase silent owners</div>
+          <div class="step-desc">Lead manually chases the 4–5 owners who haven't reported</div>
+        </div>
+        <div class="step-effort">
+          <span class="effort-label">Effort</span>
+          <div class="effort-dots">
+            <span class="ed" style="background:var(--fire-500)"></span>
+            <span class="ed" style="background:var(--fire-500)"></span>
+            <span class="ed" style="background:var(--fire-500)"></span>
+            <span class="ed" style="background:var(--fire-500)"></span>
+            <span class="ed" style="background:var(--fire-500)"></span>
+          </div>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-num">7</span>
+        <div>
+          <div class="step-title">Compile leadership summary</div>
+          <div class="step-desc">Lead compiles a summary for leadership review, often from memory</div>
+        </div>
+        <div class="step-effort">
+          <span class="effort-label">Effort</span>
+          <div class="effort-dots">
+            <span class="ed" style="background:var(--fire-400)"></span>
+            <span class="ed" style="background:var(--fire-400)"></span>
+            <span class="ed" style="background:var(--fire-400)"></span>
+            <span class="ed" style="background:var(--fire-400)"></span>
+            <span class="ed ed-empty"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /steps-grid -->
+
+  <!-- Compounding impact chart -->
+  <div class="chart-section">
+    <h3 class="chart-heading">The impact of steps 5-7 compounding</h3>
+
+    <img src="build%20images/Chart.svg" alt="Compounding impact chart — emotion and effort across steps 1–7" class="section-img">
+    <p class="chart-caption">Effort is and emotional experience are assumed and illustrative only</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     REFRAMING INTO 4 STAGES
+============================================================ -->
+<section class="section" id="section-reframe">
+  <h2 class="section-heading">Reframing into 4 stages, accelerated by Sweepy</h2>
+
+  <div class="stage-cards">
+
+    <!-- Drafting -->
+    <div class="stage-card">
+      <span class="card-tag card-tag--wireframe">Wireframe</span>
+      <h3 class="card-title">Drafting</h3>
+      <p class="card-desc">Sweepy turns the raw interview notes into a structured first-draft action list for the lead to review.</p>
+      <p class="card-caption">How Sweepy accelerates drafting initiatives</p>
+      <ul class="accel-list">
+        <li><span class="icon">🎤</span><span>Turns unstructured interview notes into a candidate action list</span></li>
+        <li><span class="icon">💡</span><span>Suggests a scope and GHG category per action</span></li>
+      </ul>
+      <div class="card-fragment">
+        <img src="build%20images/Card%201.png" alt="Wireframe showing Sweepy turning interview notes into a draft action list" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Aligning -->
+    <div class="stage-card">
+      <span class="card-tag card-tag--wireframe">Wireframe</span>
+      <h3 class="card-title">Aligning</h3>
+      <p class="card-desc">Sweepy requests and consolidates responses, flagging disagreements and making the lead's final call easier.</p>
+      <p class="card-caption">How Sweepy accelerates aligning stakeholders</p>
+      <ul class="accel-list">
+        <li><span class="icon">🗂️</span><span>Consolidates every response into a single list automatically</span></li>
+        <li><span class="icon">🚩</span><span>Flags where stakeholders agree and disagree</span></li>
+      </ul>
+      <div class="card-fragment">
+        <img src="build%20images/Card%202.png" alt="Wireframe showing Sweepy consolidating stakeholder responses" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Assigning -->
+    <div class="stage-card">
+      <span class="card-tag card-tag--wireframe">Wireframe</span>
+      <h3 class="card-title">Assigning</h3>
+      <p class="card-desc">Sweepy suggests the best-placed owner per initiative and drafts the ask; the lead can override at any time.</p>
+      <p class="card-caption">How Sweepy accelerates assigning ownership</p>
+      <ul class="accel-list">
+        <li><span class="icon">🧑</span><span>Suggests an owner from existing site and role data</span></li>
+        <li><span class="icon">📣</span><span>Drafts the individual ask to each owner</span></li>
+      </ul>
+      <div class="card-fragment">
+        <img src="build%20images/Card%203.png" alt="Wireframe showing Sweepy suggesting owners and drafting assignment messages" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Sustaining — heroed -->
+    <div class="stage-card stage-card--sustain">
+      <span class="card-tag card-tag--prototyped">Prototyped</span>
+      <h3 class="card-title card-title--sustain">Sustaining</h3>
+      <p class="card-desc">Sweepy collects, chases and checks the data, then drafts the report; the lead signs everything off.</p>
+      <p class="card-caption">How Sweepy accelerates progress</p>
+      <ul class="accel-list">
+        <li><span class="icon">📨</span><span>Sends the monthly check-in and chases silence automatically</span></li>
+        <li><span class="icon">💬</span><span>Turns a free-text reply into a structured status, next step or blocker</span></li>
+        <li><span class="icon">🚩</span><span>Flags likely discrepancies</span></li>
+        <li><span class="icon">📄</span><span>Drafts the leadership summary for the lead to review</span></li>
+      </ul>
+      <button class="btn-view-proto" id="btn-view-proto">View the prototype</button>
+    </div>
+
+  </div><!-- /stage-cards -->
+</section>
+
+<!-- ============================================================
+     BROWSER CHROME CONTAINER (empty — prototype to come)
+============================================================ -->
+<section class="section-prototype" id="section-prototype">
+  <div class="browser-container" id="browser-container">
+
+    <!-- Chrome bar — this is the element the IntersectionObserver watches -->
+    <div class="browser-chrome-bar" id="chrome-bar">
+      <div class="traffic-lights">
+        <span class="tdot tdot-r"></span>
+        <span class="tdot tdot-y"></span>
+        <span class="tdot tdot-g"></span>
+      </div>
+      <div class="chrome-divider"></div>
+      <!-- Sidebar toggle -->
+      <button class="chrome-nav-btn" aria-label="Sidebar" tabindex="-1">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <rect x="1" y="1" width="12" height="12" rx="2"/>
+          <line x1="5" y1="1" x2="5" y2="13"/>
+        </svg>
+      </button>
+      <!-- Back / Forward -->
+      <button class="chrome-nav-btn" aria-label="Back" tabindex="-1">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="8,2 4,6 8,10"/>
+        </svg>
+      </button>
+      <button class="chrome-nav-btn" aria-label="Forward" tabindex="-1">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4,2 8,6 4,10"/>
+        </svg>
+      </button>
+    </div><!-- /chrome-bar -->
+
+    <!-- Act view mounts here (JS injects .act-view; this div is the scroll viewport) -->
+    <div class="browser-body-placeholder" id="act-root" aria-label="Act view — high-fidelity prototype"></div>
+
+  </div><!-- /browser-container -->
+</section>
+
+<script>
+(function () {
+  'use strict';
+
+  // 1. Play button — smooth scroll to top
+  var btnPlay = document.getElementById('btn-play');
+  if (btnPlay) {
+    btnPlay.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // 2. "View the prototype" button — smooth scroll to browser container
+  var btnViewProto = document.getElementById('btn-view-proto');
+  var browserContainer = document.getElementById('browser-container');
+  var sectionProto = document.getElementById('section-prototype');
+  if (btnViewProto && sectionProto) {
+    btnViewProto.addEventListener('click', function () {
+      window.scrollTo({ top: sectionProto.getBoundingClientRect().top + window.pageYOffset, behavior: 'smooth' });
+    });
+  }
+
+  // 3. Scroll-driven reveal animation for browser container.
+  //    Progress: 0 when container top hits viewport bottom, 1 when container is fully in view.
+  var prefersReducedMotion = window.matchMedia
+    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    : false;
+
+  if (browserContainer) {
+    if (prefersReducedMotion) {
+      browserContainer.style.opacity = '1';
+      browserContainer.style.transform = 'none';
+    } else {
+      var wasInView = false;
+      function updateBrowserAnim() {
+        var rect = browserContainer.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var progress = Math.min(1, Math.max(0, (vh - rect.top) / rect.height));
+
+        // Browser chrome
+        browserContainer.style.opacity = progress;
+        browserContainer.style.transform =
+          'translateY(' + (24 * (1 - progress)).toFixed(2) + 'px) rotateZ(' + (-2 * (1 - progress)).toFixed(3) + 'deg)';
+
+        // Background: #f2f2f2 → #283FFF (rgb: 242,242,242 → 40,63,255)
+        var r = Math.round(242 - 202 * progress);
+        var g = Math.round(242 - 179 * progress);
+        var b = Math.round(242 + 13 * progress);
+        document.body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+
+        // Bidirectional signal to act-view.js — fires each time progress crosses the threshold
+        if (progress >= 1 && !wasInView) {
+          wasInView = true;
+          document.dispatchEvent(new CustomEvent('av-browser-ready'));
+        } else if (progress < 0.1 && wasInView) {
+          wasInView = false;
+          document.dispatchEvent(new CustomEvent('av-browser-reset'));
+        }
+      }
+
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          requestAnimationFrame(function () {
+            updateBrowserAnim();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      // Run immediately, then again after two frames to catch browser scroll-restoration
+      updateBrowserAnim();
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { updateBrowserAnim(); });
+      });
+    }
+  }
+}());
+</script>
+
+<!-- Act view — high-fidelity prototype (fills the browser chrome above) -->
+<script src="js/act-view.js?v=fc18" defer></script>
+
+</body>
+</html>

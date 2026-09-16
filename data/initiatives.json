@@ -1,0 +1,1694 @@
+{
+  "company": "Solandra Telecom",
+  "asOf": "2026-09-12",
+  "lead": {
+    "name": "Meera Chandra",
+    "role": "Head of Sustainability"
+  },
+  "initiatives": [
+    {
+      "id": "network-site-efficiency",
+      "name": "Network site energy efficiency",
+      "shortName": "Cut network site energy use",
+      "scope": "Scope 2",
+      "ghgCategory": "Purchased Electricity — network sites",
+      "description": "Upgrading power amplifiers and free-cooling at high-draw 4G/5G sites to cut grid electricity per site.",
+      "owner": {
+        "name": "Priya Nair",
+        "role": "Network Operations Lead",
+        "department": "Network"
+      },
+      "unit": "tCO2e",
+      "baseline": 9400,
+      "current": 7344,
+      "target": 7200,
+      "targetYear": 2028,
+      "percentVsTarget": 2.0,
+      "status": "at_risk",
+      "dataStatus": "up_to_date",
+      "staleDays": 0,
+      "lastCheckIn": "2026-09-01",
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 7848,
+          "actual": 7851,
+          "delta": 3
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 7766,
+          "actual": 7923,
+          "delta": 157
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 7684,
+          "actual": 7733,
+          "delta": 49
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 7603,
+          "actual": 7634,
+          "delta": 32
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 7521,
+          "actual": 7551,
+          "delta": 31
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 7439,
+          "actual": 7619,
+          "delta": 180
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 7357,
+          "actual": 7500,
+          "delta": 142
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 7275,
+          "actual": 7433,
+          "delta": 158
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 7193,
+          "actual": 7236,
+          "delta": 43
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 7112,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 7030,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 6948,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "image": "assets/initiatives/Cut site energy use.jpg"
+    },
+    {
+      "id": "datacentre-cooling",
+      "name": "Data centre cooling optimisation",
+      "shortName": "Cool data centres efficiently",
+      "scope": "Scope 2",
+      "ghgCategory": "Purchased Electricity — data centres",
+      "description": "Raising cold-aisle set points and adding free-air cooling across the core data centre estate to cut PUE.",
+      "owner": {
+        "name": "Marcus Webb",
+        "role": "Data Centre Operations Lead",
+        "department": "IT Infrastructure"
+      },
+      "unit": "tCO2e",
+      "baseline": 6100,
+      "current": 4531,
+      "target": 4600,
+      "targetYear": 2028,
+      "percentVsTarget": -1.5,
+      "status": "on_track",
+      "dataStatus": "up_to_date",
+      "staleDays": 0,
+      "lastCheckIn": "2026-09-04",
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 5014,
+          "actual": 4931,
+          "delta": -83
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 4962,
+          "actual": 4976,
+          "delta": 15
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 4909,
+          "actual": 4850,
+          "delta": -60
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 4857,
+          "actual": 4855,
+          "delta": -2
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 4805,
+          "actual": 4755,
+          "delta": -50
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 4753,
+          "actual": 4628,
+          "delta": -125
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 4700,
+          "actual": 4707,
+          "delta": 7
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 4648,
+          "actual": 4629,
+          "delta": -19
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 4596,
+          "actual": 4592,
+          "delta": -4
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 4544,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 4491,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 4439,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "image": "assets/initiatives/Cool data centres.jpg"
+    },
+    {
+      "id": "renewable-ppa",
+      "name": "Renewable electricity PPA — network estate",
+      "shortName": "Power the network on renewables",
+      "scope": "Scope 2",
+      "ghgCategory": "Purchased Electricity (market-based) — network estate",
+      "description": "Corporate PPA covering an increasing share of network-estate electricity with wind and solar generation.",
+      "owner": {
+        "name": "Sofia Alvarez",
+        "role": "Energy Procurement Lead",
+        "department": "Energy & Sustainability"
+      },
+      "unit": "tCO2e",
+      "baseline": 8800,
+      "current": 2332,
+      "target": 2200,
+      "targetYear": 2029,
+      "percentVsTarget": 6.0,
+      "status": "at_risk",
+      "dataStatus": "up_to_date",
+      "staleDays": 0,
+      "lastCheckIn": "2026-09-04",
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 2398,
+          "actual": 2480,
+          "delta": 82
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 2373,
+          "actual": 2445,
+          "delta": 72
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 2348,
+          "actual": 2445,
+          "delta": 97
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 2323,
+          "actual": 2455,
+          "delta": 132
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 2298,
+          "actual": 2429,
+          "delta": 131
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 2273,
+          "actual": 2366,
+          "delta": 93
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 2248,
+          "actual": 2341,
+          "delta": 93
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 2223,
+          "actual": 2351,
+          "delta": 128
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 2198,
+          "actual": 2339,
+          "delta": 141
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 2173,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 2148,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 2123,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "image": "assets/initiatives/Power the network on renewables.jpg"
+    },
+    {
+      "id": "offgrid-solar",
+      "name": "Off-grid cell tower solar & battery",
+      "shortName": "Take remote towers off diesel",
+      "scope": "Scope 1",
+      "ghgCategory": "Stationary Combustion — remote sites",
+      "description": "Replacing diesel generators at off-grid rural sites with solar-plus-battery power systems.",
+      "owner": {
+        "name": "Daniel Osiel",
+        "role": "Rural Network Lead",
+        "department": "Network"
+      },
+      "unit": "tCO2e",
+      "baseline": 2100,
+      "current": 972,
+      "target": 900,
+      "targetYear": 2027,
+      "percentVsTarget": 8.0,
+      "status": "stalled",
+      "dataStatus": "pending_review",
+      "staleDays": 19,
+      "lastCheckIn": null,
+      "overview": "Forty off-grid sites still run on diesel generators, mostly in the Highlands and mid-Wales network where grid connection isn't viable. The goal is to convert all forty to solar-plus-battery by the end of 2027, cutting roughly 1,200 tCO2e a year and removing ~140,000 litres of diesel resupply trips annually — a real cost story alongside the carbon one.",
+      "currentNote": "12 of 40 sites converted so far. The planning consent for REMOTE-1329's battery enclosure was delayed for weeks but cleared on 2026-09-10 — the contractor has mobilised and the two outstanding sites are expected to convert within the week. Diesel volumes haven't moved yet this quarter, which is the flag below.",
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 981,
+          "actual": 1034,
+          "delta": 53
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 971,
+          "actual": 1020,
+          "delta": 49
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 961,
+          "actual": 1000,
+          "delta": 40
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 950,
+          "actual": 1001,
+          "delta": 51
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 940,
+          "actual": 998,
+          "delta": 57
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 930,
+          "actual": 986,
+          "delta": 56
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 920,
+          "actual": 990,
+          "delta": 71
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 909,
+          "actual": 975,
+          "delta": 66
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 899,
+          "actual": 973,
+          "delta": 73
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 889,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 879,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 868,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "image": "assets/initiatives/Take remote towers off diesel.jpg"
+    },
+    {
+      "id": "fleet-electrification",
+      "name": "Field fleet electrification",
+      "shortName": "Electrify the field fleet",
+      "scope": "Scope 1",
+      "ghgCategory": "Mobile Combustion — field engineer vans",
+      "description": "Replacing diesel field-engineer vans with electric vans as the lease cycle turns over, depot by depot.",
+      "owner": {
+        "name": "Grace Lindqvist",
+        "role": "Field Operations Lead",
+        "department": "Field Operations"
+      },
+      "unit": "tCO2e",
+      "baseline": 3400,
+      "current": 1957,
+      "target": 1900,
+      "targetYear": 2028,
+      "percentVsTarget": 3.0,
+      "status": "at_risk",
+      "dataStatus": "up_to_date",
+      "staleDays": 0,
+      "lastCheckIn": "2026-09-08",
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 2071,
+          "actual": 2138,
+          "delta": 67
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 2049,
+          "actual": 2073,
+          "delta": 24
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 2028,
+          "actual": 2063,
+          "delta": 35
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 2006,
+          "actual": 2073,
+          "delta": 67
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 1985,
+          "actual": 2027,
+          "delta": 42
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 1963,
+          "actual": 2002,
+          "delta": 39
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 1941,
+          "actual": 1992,
+          "delta": 51
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 1920,
+          "actual": 1998,
+          "delta": 79
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 1898,
+          "actual": 1948,
+          "delta": 50
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 1877,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 1855,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 1834,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "image": "assets/initiatives/Electrify the field fleet.jpg"
+    },
+    {
+      "id": "business-travel",
+      "name": "Business travel reduction",
+      "shortName": "Cut business travel emissions",
+      "scope": "Scope 3",
+      "ghgCategory": "Category 6 — Business Travel",
+      "description": "Default-to-rail policy for domestic routes and a per-team quarterly travel-carbon budget.",
+      "owner": {
+        "name": "Tom Radley",
+        "role": "Head of People & Culture",
+        "department": "People & Culture"
+      },
+      "unit": "tCO2e",
+      "baseline": 1450,
+      "current": 970,
+      "target": 1000,
+      "targetYear": 2027,
+      "percentVsTarget": -3.0,
+      "status": "on_track",
+      "dataStatus": "up_to_date",
+      "staleDays": 0,
+      "lastCheckIn": "2026-09-08",
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 1090,
+          "actual": 1065,
+          "delta": -25
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 1079,
+          "actual": 1046,
+          "delta": -32
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 1067,
+          "actual": 1058,
+          "delta": -10
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 1056,
+          "actual": 1016,
+          "delta": -40
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 1045,
+          "actual": 1031,
+          "delta": -14
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 1033,
+          "actual": 996,
+          "delta": -37
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 1022,
+          "actual": 983,
+          "delta": -39
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 1010,
+          "actual": 974,
+          "delta": -36
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 999,
+          "actual": 959,
+          "delta": -40
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 988,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 976,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 965,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "image": "assets/initiatives/Cut business travel emissions.jpg"
+    },
+    {
+      "id": "employee-commuting",
+      "name": "Employee commuting — EV salary sacrifice",
+      "shortName": "Shift commuting off petrol and diesel",
+      "scope": "Scope 3",
+      "ghgCategory": "Category 7 — Employee Commuting",
+      "description": "Salary-sacrifice EV lease scheme and an annual commuting survey to model the shift away from petrol/diesel cars.",
+      "owner": {
+        "name": "Aisha Rahman",
+        "role": "HR Programmes Lead",
+        "department": "People & Culture"
+      },
+      "unit": "tCO2e",
+      "baseline": 5200,
+      "current": 3958,
+      "target": 3900,
+      "targetYear": 2029,
+      "percentVsTarget": 1.5,
+      "status": "at_risk",
+      "dataStatus": "up_to_date",
+      "staleDays": 0,
+      "lastCheckIn": "2026-09-01",
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 4251,
+          "actual": 4266,
+          "delta": 15
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 4207,
+          "actual": 4240,
+          "delta": 33
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 4162,
+          "actual": 4202,
+          "delta": 40
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 4118,
+          "actual": 4181,
+          "delta": 63
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 4074,
+          "actual": 4159,
+          "delta": 85
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 4029,
+          "actual": 4092,
+          "delta": 62
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 3985,
+          "actual": 4021,
+          "delta": 36
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 3941,
+          "actual": 3947,
+          "delta": 6
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 3896,
+          "actual": 3950,
+          "delta": 54
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 3852,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 3808,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 3764,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "image": "assets/initiatives/Shift commuting.jpg"
+    },
+    {
+      "id": "supplier-engagement",
+      "name": "Network equipment supplier engagement",
+      "shortName": "Decarbonise the equipment supply chain",
+      "scope": "Scope 3",
+      "ghgCategory": "Category 1 — Purchased Goods & Services",
+      "description": "Requiring primary emissions data (not industry-average factors) from the top RAN and core equipment vendors by contract renewal.",
+      "owner": {
+        "name": "Ben Fitzgerald",
+        "role": "Procurement Lead",
+        "department": "Procurement"
+      },
+      "unit": "tCO2e",
+      "baseline": 41000,
+      "current": 34650,
+      "target": 33000,
+      "targetYear": 2029,
+      "percentVsTarget": 5.0,
+      "status": "at_risk",
+      "dataStatus": "up_to_date",
+      "staleDays": 0,
+      "lastCheckIn": "2026-09-01",
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 35970,
+          "actual": 36706,
+          "delta": 736
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 35595,
+          "actual": 36362,
+          "delta": 767
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 35220,
+          "actual": 36681,
+          "delta": 1461
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 34845,
+          "actual": 36615,
+          "delta": 1770
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 34470,
+          "actual": 35370,
+          "delta": 900
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 34095,
+          "actual": 35239,
+          "delta": 1144
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 33720,
+          "actual": 35532,
+          "delta": 1812
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 33345,
+          "actual": 35315,
+          "delta": 1970
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 32970,
+          "actual": 34436,
+          "delta": 1466
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 32595,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 32220,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 31845,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "image": "assets/initiatives/Decarbonise suplpy chain.jpg"
+    },
+    {
+      "id": "handset-takeback",
+      "name": "Handset take-back & circular refurbishment",
+      "shortName": "Keep devices in circulation longer",
+      "scope": "Scope 3",
+      "ghgCategory": "Category 12 — End-of-Life Treatment of Sold Products",
+      "description": "Expanding trade-in and refurbishment so fewer customers need a newly-manufactured handset, cutting embodied-carbon shipped.",
+      "owner": {
+        "name": "Yuki Tanaka",
+        "role": "Retail & Devices Lead",
+        "department": "Retail & Devices"
+      },
+      "unit": "tCO2e",
+      "baseline": 5600,
+      "current": 3379,
+      "target": 3100,
+      "targetYear": 2028,
+      "percentVsTarget": 9.0,
+      "status": "stalled",
+      "dataStatus": "awaiting_data",
+      "staleDays": 15,
+      "lastCheckIn": null,
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 3379,
+          "actual": 3612,
+          "delta": 233
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 3344,
+          "actual": 3536,
+          "delta": 192
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 3309,
+          "actual": 3555,
+          "delta": 246
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 3273,
+          "actual": 3494,
+          "delta": 221
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 3238,
+          "actual": 3431,
+          "delta": 193
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 3203,
+          "actual": 3438,
+          "delta": 235
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 3168,
+          "actual": 3420,
+          "delta": 253
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 3132,
+          "actual": 3376,
+          "delta": 243
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 3097,
+          "actual": 3384,
+          "delta": 286
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 3062,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 3027,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 2992,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "blocked": true,
+      "blockerShort": "Partner's warehouse move has paused intake",
+      "image": "assets/initiatives/Keep devices in circulation.jpg"
+    },
+    {
+      "id": "device-efficiency-labelling",
+      "name": "Customer device energy-efficiency labelling",
+      "shortName": "Cut customer device power draw",
+      "scope": "Scope 3",
+      "ghgCategory": "Category 11 — Use of Sold Products",
+      "description": "Steering customers toward lower-power routers and handsets at point of sale, modelled against the active install base.",
+      "owner": {
+        "name": "Chloe Marchetti",
+        "role": "Product Sustainability Lead",
+        "department": "Product"
+      },
+      "unit": "tCO2e",
+      "baseline": 12800,
+      "current": 10605,
+      "target": 10500,
+      "targetYear": 2029,
+      "percentVsTarget": 1.0,
+      "status": "at_risk",
+      "dataStatus": "up_to_date",
+      "staleDays": 0,
+      "lastCheckIn": "2026-09-09",
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 11445,
+          "actual": 11506,
+          "delta": 61
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 11326,
+          "actual": 11547,
+          "delta": 222
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 11206,
+          "actual": 11119,
+          "delta": -87
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 11087,
+          "actual": 11131,
+          "delta": 44
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 10968,
+          "actual": 11038,
+          "delta": 70
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 10848,
+          "actual": 10865,
+          "delta": 16
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 10729,
+          "actual": 10771,
+          "delta": 42
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 10610,
+          "actual": 10737,
+          "delta": 127
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 10490,
+          "actual": 10618,
+          "delta": 128
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 10371,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 10252,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 10132,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "image": "assets/initiatives/Cut customer device.jpg"
+    },
+    {
+      "id": "cloud-migration",
+      "name": "Cloud & hosting migration to renewable providers",
+      "shortName": "Move workloads to clean cloud",
+      "scope": "Scope 3",
+      "ghgCategory": "Category 1 — Purchased Goods & Services (cloud & IT services)",
+      "description": "Migrating core workloads to renewable-powered cloud regions and consolidating legacy on-prem hosting.",
+      "owner": {
+        "name": "Liam O'Connor",
+        "role": "IT Infrastructure Lead",
+        "department": "IT Infrastructure"
+      },
+      "unit": "tCO2e",
+      "baseline": 3900,
+      "current": 2079,
+      "target": 2100,
+      "targetYear": 2028,
+      "percentVsTarget": -1.0,
+      "status": "on_track",
+      "dataStatus": "awaiting_data",
+      "staleDays": 0,
+      "lastCheckIn": null,
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 2289,
+          "actual": 2242,
+          "delta": -47
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 2265,
+          "actual": 2254,
+          "delta": -11
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 2241,
+          "actual": 2231,
+          "delta": -10
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 2217,
+          "actual": 2215,
+          "delta": -2
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 2194,
+          "actual": 2163,
+          "delta": -31
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 2170,
+          "actual": 2131,
+          "delta": -38
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 2146,
+          "actual": 2109,
+          "delta": -37
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 2122,
+          "actual": 2106,
+          "delta": -16
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 2098,
+          "actual": 2061,
+          "delta": -37
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 2074,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 2050,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 2026,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "image": "assets/initiatives/Move workload to clean cloud.jpg"
+    },
+    {
+      "id": "retail-store-retrofit",
+      "name": "Retail store energy retrofit",
+      "shortName": "Retrofit stores for efficiency",
+      "scope": "Scope 2",
+      "ghgCategory": "Purchased Electricity — retail estate",
+      "description": "LED lighting, smart HVAC controls and better insulation across the owned retail estate.",
+      "owner": {
+        "name": "Nadia Petrov",
+        "role": "Retail Estates Lead",
+        "department": "Retail & Devices"
+      },
+      "unit": "tCO2e",
+      "baseline": 1900,
+      "current": 1438,
+      "target": 1450,
+      "targetYear": 2028,
+      "percentVsTarget": -0.8,
+      "status": "on_track",
+      "dataStatus": "up_to_date",
+      "staleDays": 0,
+      "lastCheckIn": "2026-09-10",
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 1581,
+          "actual": 1593,
+          "delta": 13
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 1564,
+          "actual": 1542,
+          "delta": -22
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 1548,
+          "actual": 1562,
+          "delta": 14
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 1531,
+          "actual": 1507,
+          "delta": -24
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 1515,
+          "actual": 1517,
+          "delta": 2
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 1498,
+          "actual": 1467,
+          "delta": -31
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 1482,
+          "actual": 1481,
+          "delta": -1
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 1465,
+          "actual": 1473,
+          "delta": 8
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 1449,
+          "actual": 1424,
+          "delta": -24
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 1432,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 1416,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 1399,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "image": "assets/initiatives/Retrofit stores.jpg"
+    },
+    {
+      "id": "sustainable-packaging",
+      "name": "Sustainable packaging for devices & SIM kits",
+      "shortName": "Cut packaging carbon",
+      "scope": "Scope 3",
+      "ghgCategory": "Category 1 — Purchased Goods & Services (packaging)",
+      "description": "Shifting device and SIM-kit packaging to recycled card and removing plastic film across the top-selling SKUs.",
+      "owner": {
+        "name": "Sam Okafor",
+        "role": "Packaging & Supply Chain Lead",
+        "department": "Supply Chain"
+      },
+      "unit": "tCO2e",
+      "baseline": 980,
+      "current": 663,
+      "target": 620,
+      "targetYear": 2027,
+      "percentVsTarget": 6.9,
+      "status": "stalled",
+      "dataStatus": "awaiting_data",
+      "staleDays": 15,
+      "lastCheckIn": null,
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 676,
+          "actual": 697,
+          "delta": 21
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 669,
+          "actual": 702,
+          "delta": 33
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 662,
+          "actual": 697,
+          "delta": 35
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 655,
+          "actual": 687,
+          "delta": 32
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 648,
+          "actual": 676,
+          "delta": 28
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 641,
+          "actual": 684,
+          "delta": 44
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 634,
+          "actual": 679,
+          "delta": 45
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 626,
+          "actual": 666,
+          "delta": 40
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 619,
+          "actual": 667,
+          "delta": 48
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 612,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 605,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 598,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "blocked": true,
+      "blockerShort": "Supplier shipment failed a compliance retest",
+      "image": "assets/initiatives/Cut packaging carbon.jpg"
+    },
+    {
+      "id": "capital-goods-network-build",
+      "name": "Low-carbon network build standard",
+      "shortName": "Build the network low-carbon by design",
+      "scope": "Scope 3",
+      "ghgCategory": "Category 2 — Capital Goods",
+      "description": "A low-carbon materials and equipment standard applied to new 5G densification and fibre rollout builds.",
+      "owner": {
+        "name": "Ella Whitfield",
+        "role": "Network Planning Lead",
+        "department": "Network"
+      },
+      "unit": "tCO2e",
+      "baseline": 16500,
+      "current": 12480,
+      "target": 12000,
+      "targetYear": 2029,
+      "percentVsTarget": 4.0,
+      "status": "at_risk",
+      "dataStatus": "awaiting_data",
+      "staleDays": 0,
+      "lastCheckIn": null,
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 13080,
+          "actual": 13268,
+          "delta": 188
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 12944,
+          "actual": 13459,
+          "delta": 515
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 12807,
+          "actual": 12987,
+          "delta": 180
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 12671,
+          "actual": 13166,
+          "delta": 495
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 12535,
+          "actual": 13016,
+          "delta": 482
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 12398,
+          "actual": 12878,
+          "delta": 479
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 12262,
+          "actual": 12602,
+          "delta": 340
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 12125,
+          "actual": 12495,
+          "delta": 369
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 11989,
+          "actual": 12618,
+          "delta": 629
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 11853,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 11716,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 11580,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "image": "assets/initiatives/Build the network.jpg"
+    },
+    {
+      "id": "backup-power-transition",
+      "name": "Backup power diesel-to-battery transition",
+      "shortName": "Replace diesel backup with batteries",
+      "scope": "Scope 1",
+      "ghgCategory": "Stationary Combustion — exchange sites",
+      "description": "Replacing ageing diesel backup generators at telephone exchange sites with battery storage, exchange by exchange.",
+      "owner": {
+        "name": "Rohan Desai",
+        "role": "Facilities Lead",
+        "department": "Facilities"
+      },
+      "unit": "tCO2e",
+      "baseline": 2600,
+      "current": 1274,
+      "target": 1300,
+      "targetYear": 2028,
+      "percentVsTarget": -2.0,
+      "status": "on_track",
+      "dataStatus": "up_to_date",
+      "staleDays": 0,
+      "lastCheckIn": "2026-09-03",
+      "overview": null,
+      "currentNote": null,
+      "monthly": [
+        {
+          "month": 1,
+          "label": "Jan",
+          "target": 1417,
+          "actual": 1392,
+          "delta": -25
+        },
+        {
+          "month": 2,
+          "label": "Feb",
+          "target": 1402,
+          "actual": 1384,
+          "delta": -19
+        },
+        {
+          "month": 3,
+          "label": "Mar",
+          "target": 1387,
+          "actual": 1351,
+          "delta": -36
+        },
+        {
+          "month": 4,
+          "label": "Apr",
+          "target": 1373,
+          "actual": 1341,
+          "delta": -32
+        },
+        {
+          "month": 5,
+          "label": "May",
+          "target": 1358,
+          "actual": 1325,
+          "delta": -33
+        },
+        {
+          "month": 6,
+          "label": "Jun",
+          "target": 1343,
+          "actual": 1321,
+          "delta": -22
+        },
+        {
+          "month": 7,
+          "label": "Jul",
+          "target": 1328,
+          "actual": 1285,
+          "delta": -44
+        },
+        {
+          "month": 8,
+          "label": "Aug",
+          "target": 1314,
+          "actual": 1305,
+          "delta": -8
+        },
+        {
+          "month": 9,
+          "label": "Sep",
+          "target": 1299,
+          "actual": 1261,
+          "delta": -38
+        },
+        {
+          "month": 10,
+          "label": "Oct",
+          "target": 1284,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 11,
+          "label": "Nov",
+          "target": 1269,
+          "actual": null,
+          "delta": null
+        },
+        {
+          "month": 12,
+          "label": "Dec",
+          "target": 1254,
+          "actual": null,
+          "delta": null
+        }
+      ],
+      "image": "assets/initiatives/Replace diesel with backup batteries.jpg"
+    }
+  ]
+}

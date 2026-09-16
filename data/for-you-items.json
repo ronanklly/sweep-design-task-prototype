@@ -1,0 +1,123 @@
+[
+  {
+    "initiativeId": "offgrid-solar",
+    "initiativeName": "Off-grid cell tower solar & battery",
+    "cardType": "signoff",
+    "owner": {
+      "name": "Daniel Osiel",
+      "role": "Rural Network Lead",
+      "department": "Network"
+    },
+    "channel": "Teams",
+    "messages": [
+      {
+        "from_": "Sweepy",
+        "to": "Daniel",
+        "sentVia": "Teams",
+        "timestamp": "2026-08-21T09:14:00+01:00",
+        "text": "Hi Daniel — quick check on off-grid cell tower solar & battery. How's it tracking against target this cycle? A sentence or two is all I need, and send over this month's site data whenever you've got it."
+      },
+      {
+        "from_": "Sweepy",
+        "to": "Daniel",
+        "sentVia": "Teams",
+        "timestamp": "2026-09-11T08:02:00+01:00",
+        "text": "Hi Daniel — following up on the check-in below, this one's now overdue for the leadership review. Even a rough status helps: on track, at risk, or stalled, plus anything blocking you."
+      },
+      {
+        "from_": "Daniel",
+        "to": "Sweepy",
+        "sentVia": "Teams",
+        "timestamp": "2026-09-12T09:42:00+01:00",
+        "text": "Sorry for the quiet — the planning consent for REMOTE-1329's battery enclosure only cleared this week, that's what's been holding up the last two sites. Good news is the contractor's already mobilised, so both should be converted and off diesel within the week. Attaching this month's site-level numbers now."
+      }
+    ],
+    "dataSubmission": {
+      "type": "spreadsheet",
+      "filename": "REMOTE-1329_solar-battery_Sep2026.xlsx",
+      "note": "Site-level diesel-to-solar conversion data for September, all 12 converted sites plus the 2 still pending."
+    },
+    "qualityCheck": {
+      "text": "Checked against last month's figures and the site's usual format — numbers are consistent, no formatting issues."
+    },
+    "nuance": {
+      "text": "Diesel volumes haven't moved yet this quarter — expected, since the 2 outstanding sites only just got planning consent and haven't converted yet. Not a data issue, just not reflected until next month's figures."
+    },
+    "extraction": {
+      "previousStatus": "stalled",
+      "status": "at_risk",
+      "blocker": "Planning consent for REMOTE-1329's battery enclosure — now resolved",
+      "nextStep": "Remaining 2 sites converting off diesel within the week"
+    }
+  },
+  {
+    "initiativeId": "handset-takeback",
+    "initiativeName": "Handset take-back & circular refurbishment",
+    "cardType": "blocked_fyi",
+    "owner": {
+      "name": "Yuki Tanaka",
+      "role": "Retail & Devices Lead",
+      "department": "Retail & Devices"
+    },
+    "channel": "Teams",
+    "messages": [
+      {
+        "from_": "Sweepy",
+        "to": "Yuki",
+        "sentVia": "Teams",
+        "timestamp": "2026-08-21T09:14:00+01:00",
+        "text": "Hi Yuki — quick check on handset take-back & circular refurbishment. How's it tracking against target this cycle? A sentence or two is all I need."
+      },
+      {
+        "from_": "Sweepy",
+        "to": "Yuki",
+        "sentVia": "Teams",
+        "timestamp": "2026-09-11T08:02:00+01:00",
+        "text": "Hi Yuki — following up on the check-in below, this one's now overdue for the leadership review. Even a rough status helps: on track, at risk, or stalled, plus anything blocking you."
+      },
+      {
+        "from_": "Yuki",
+        "to": "Sweepy",
+        "sentVia": "Teams",
+        "timestamp": "2026-09-12T10:08:00+01:00",
+        "text": "Not much movement, sorry — our refurbishment partner is mid-move to a new warehouse and intake's been paused since mid-August. No confirmed reopening date yet, I've chased them twice this week."
+      }
+    ],
+    "blockerSummary": "Refurbishment partner's warehouse move has paused intake since mid-August, no confirmed reopening date. Yuki's chasing the partner directly."
+  },
+  {
+    "initiativeId": "sustainable-packaging",
+    "initiativeName": "Sustainable packaging for devices & SIM kits",
+    "cardType": "blocked_fyi",
+    "owner": {
+      "name": "Sam Okafor",
+      "role": "Packaging & Supply Chain Lead",
+      "department": "Supply Chain"
+    },
+    "channel": "Teams",
+    "messages": [
+      {
+        "from_": "Sweepy",
+        "to": "Sam",
+        "sentVia": "Teams",
+        "timestamp": "2026-08-21T09:14:00+01:00",
+        "text": "Hi Sam — quick check on sustainable packaging for devices & sim kits. How's it tracking against target this cycle? A sentence or two is all I need."
+      },
+      {
+        "from_": "Sweepy",
+        "to": "Sam",
+        "sentVia": "Teams",
+        "timestamp": "2026-09-11T08:02:00+01:00",
+        "text": "Hi Sam — following up on the check-in below, this one's now overdue for the leadership review. Even a rough status helps: on track, at risk, or stalled, plus anything blocking you."
+      },
+      {
+        "from_": "Sam",
+        "to": "Sweepy",
+        "sentVia": "Teams",
+        "timestamp": "2026-09-12T11:20:00+01:00",
+        "text": "Still stuck on our end — the recycled-card supplier's shipment finally cleared customs but failed our moisture-spec compliance check, so we're back to retesting samples. Nothing to accelerate until the retest results land."
+      }
+    ],
+    "blockerSummary": "Recycled-card supplier's shipment failed a moisture-spec compliance retest after clearing customs. Awaiting retest results, no date confirmed."
+  }
+]
