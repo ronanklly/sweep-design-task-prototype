@@ -232,7 +232,7 @@
 }
 .av-report-tile:hover .av-report-arrow { opacity: 1; transform: translate(0, -50%); }
 .av-report-mid { flex: 1 1 auto; min-width: 0; }
-.av-report-title { font-size: 16px; line-height: 28px; font-weight: 700; }
+.av-report-title { font-size: 16px; line-height: 21px; font-weight: 700; }
 .av-report-cycle { font-size: 12px; line-height: 20px; color: var(--av-sub); margin-top: 1px; }
 .av-report-chip {
   display: inline-flex; align-items: center; gap: 6px;
