@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/act-view.css?v=fc21">
+<link rel="stylesheet" href="css/act-view.css?v=fc27">
 <style>
 :root {
   --primary: #283fff;
@@ -395,6 +395,9 @@ ul, ol { margin: 0; padding: 0; }
    BROWSER CHROME CONTAINER
 ============================================================ */
 .section-prototype {
+  display: none;        /* out of normal flow — the presentation ends at the cards.
+                           The "View the prototype" CTA reveals it (JS sets display) */
+  position: relative;   /* anchor for the top-right hold-to-exit lock (on the blue) */
   /* wider L/R padding narrows the browser; tighter top/bottom gives it more height */
   padding: calc(var(--header-h) + 24px) 100px 24px;
 }
@@ -486,7 +489,46 @@ ul, ol { margin: 0; padding: 0; }
   overflow-y: auto;
   background: #f6f6f7;
   width: 100%;
+  /* Keep scrolling inside the app from chaining out to the window (which would
+     reverse the reveal animation) — the scroll-lock JS relies on this. */
+  overscroll-behavior: contain;
 }
+
+/* Hold-to-exit lock. While the prototype is fully in view the page's vertical
+   scroll is trapped; this button releases it. 10% white fill, white lock icon,
+   with a 20% white fill that sweeps left→right over the 2s press-and-hold. */
+.proto-lock {
+  position: absolute;
+  top: calc(var(--header-h) + 24px);   /* top aligned to the top of the browser chrome window */
+  right: 24px;                         /* right edge shares the nav code button's 24px gap to the viewport */
+  width: 36px;                         /* match the nav play/code buttons (.btn-icon) */
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;            /* clips the sweeping fill to the rounded corners */
+  cursor: pointer;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;          /* holding must not scroll on touch */
+}
+.proto-lock.is-visible { opacity: 1; pointer-events: auto; }
+.proto-lock-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0;
+  background: rgba(255, 255, 255, 0.20);
+  transition: width .18s ease;                 /* quick reset when released early */
+}
+.proto-lock.is-holding .proto-lock-fill { width: 100%; transition: width 1.7s linear; }
+.proto-lock-ico { position: relative; z-index: 1; display: block; }
 
 /* Too-small fallback: the prototype is a fixed two-column layout, so below 1050px
    we swap the browser chrome for an outlined box (same 14px rounding, 1px white
@@ -512,6 +554,7 @@ ul, ol { margin: 0; padding: 0; }
 @media (max-width: 1050px) {
   .browser-container { display: none; }
   .browser-toosmall { display: flex; }
+  .proto-lock { display: none; }   /* no prototype to lock at this width */
   /* Keep the prototype area blue (matching the scrolled-in state at wide sizes).
      The scroll-reveal JS paints the whole <body> blue, but it bails out at this
      width, so we set the blue statically on the section itself instead — that
@@ -521,7 +564,9 @@ ul, ol { margin: 0; padding: 0; }
 
 /* Tighten the gap between analysis and reframe sections to half */
 #section-analysis { padding-bottom: 60px; }
-#section-reframe  { padding-top: 60px; }
+/* reframe is the last section in normal flow (the prototype is revealed on demand),
+   so keep a slim 60px of grey below the final cards */
+#section-reframe  { padding-top: 60px; padding-bottom: 60px; }
 
 /* Analysis image — cancel the section's horizontal padding so only the
    image's own internal whitespace acts as the visual margin */
@@ -870,6 +915,17 @@ ul, ol { margin: 0; padding: 0; }
 
   </div><!-- /browser-container -->
 
+  <!-- Hold-to-exit lock, pinned to the top-right of the blue container (beside the
+       window): while the prototype is in view the page scroll is trapped; press & hold
+       ~1.7s to release it and scroll back up to the 4-stage cards. -->
+  <button class="proto-lock" id="proto-lock" type="button" aria-label="Press and hold to exit the prototype">
+    <span class="proto-lock-fill" aria-hidden="true"></span>
+    <svg class="proto-lock-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5"/>
+      <path d="M6 11l6-6 6 6"/>
+    </svg>
+  </button>
+
   <!-- Fallback shown below 1050px, where the fixed two-column prototype can't fit -->
   <div class="browser-toosmall" id="browser-toosmall">
     <p>Your browser is too small to view the prototype. Please make it bigger</p>
@@ -888,21 +944,26 @@ ul, ol { margin: 0; padding: 0; }
     });
   }
 
-  // 2. "View the prototype" button — smooth scroll to browser container
+  // 2. "View the prototype" button — wired further down, once the scroll-lock helpers
+  //    (smoothScrollTo) exist, so the reveal can't lock the page mid-scroll.
   var btnViewProto = document.getElementById('btn-view-proto');
   var browserContainer = document.getElementById('browser-container');
   var sectionProto = document.getElementById('section-prototype');
-  if (btnViewProto && sectionProto) {
-    btnViewProto.addEventListener('click', function () {
-      window.scrollTo({ top: sectionProto.getBoundingClientRect().top + window.pageYOffset, behavior: 'smooth' });
-    });
-  }
+
+  // Shared: below this width the chrome is hidden and the too-small fallback shows.
+  var tooSmallMq = window.matchMedia('(max-width: 1050px)');
 
   // 3. Scroll-driven reveal animation for browser container.
   //    Progress: 0 when container top hits viewport bottom, 1 when container is fully in view.
   var prefersReducedMotion = window.matchMedia
     ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
     : false;
+
+  // Prototype scroll-lock state (see the "hold to exit" block at the end).
+  var locked = false;
+  var lockedScrollY = 0;
+  var programmatic = false;   // true during our own smooth scrolls — defer locking
+  var protoShown = false;     // prototype is display:none until the CTA reveals it
 
   if (browserContainer) {
     if (prefersReducedMotion) {
@@ -914,8 +975,12 @@ ul, ol { margin: 0; padding: 0; }
       // skip the reveal maths (a display:none container reports a zero-height rect,
       // which would otherwise clamp progress to 1 and paint the whole page blue) and
       // hand the background back to the stylesheet default.
-      var tooSmallMq = window.matchMedia('(max-width: 1050px)');
       function updateBrowserAnim() {
+        // While locked the page can't scroll, so freeze the reveal at its settled
+        // state (engageLock() already snapped it to fully-in) and keep the blue bg.
+        if (locked) return;
+        // The prototype is out of flow until the CTA reveals it — keep the page grey.
+        if (!protoShown) { document.body.style.backgroundColor = ''; return; }
         if (tooSmallMq.matches) { document.body.style.backgroundColor = ''; return; }
         var rect = browserContainer.getBoundingClientRect();
         var vh = window.innerHeight;
@@ -962,12 +1027,164 @@ ul, ol { margin: 0; padding: 0; }
         requestAnimationFrame(function () { updateBrowserAnim(); });
       });
     }
+
+    // 4. Prototype scroll-lock — "hold to exit".
+    //    Once the chrome is fully in view the window's vertical scroll is trapped, so an
+    //    accidental over-scroll inside the app can no longer reverse the reveal and leave
+    //    it half-faded/rotated. The app still scrolls internally. The only way out is a
+    //    ~1.7s press-and-hold on the lock button, which releases the trap and smooth-
+    //    scrolls back up to the top of the 4-stage cards.
+    var actRoot = document.getElementById('act-root');
+    var lockBtn = document.getElementById('proto-lock');
+    var sectionReframe = document.getElementById('section-reframe');
+    var headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'), 10) || 67;
+    var holdTimer = null;
+
+    function engageLock() {
+      if (locked || tooSmallMq.matches || programmatic) return;
+      locked = true;
+      lockedScrollY = window.pageYOffset;
+      // Snap the reveal to its finished state so locking can't freeze it mid-animation.
+      browserContainer.style.opacity = '1';
+      browserContainer.style.transform = 'none';
+      document.body.style.backgroundColor = 'rgb(40,63,255)';
+      if (lockBtn) lockBtn.classList.add('is-visible');
+    }
+    function releaseLock() {
+      if (!locked) return;
+      locked = false;
+      if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
+      if (lockBtn) { lockBtn.classList.remove('is-visible'); lockBtn.classList.remove('is-holding'); }
+      // Animated mode repaints the bg as it scrolls away; reduced motion needs a reset.
+      if (prefersReducedMotion) document.body.style.backgroundColor = '';
+    }
+    // Re-pin to the fresh canonical framing (used after a resize, where the old
+    // lockedScrollY and the 100vh-based container height no longer line up).
+    function resettleLock() {
+      var y = sectionProto.getBoundingClientRect().top + window.pageYOffset;
+      locked = false;                 // allow the corrective jump
+      window.scrollTo(0, y);
+      lockedScrollY = window.pageYOffset;
+      locked = true;
+      browserContainer.style.opacity = '1';
+      browserContainer.style.transform = 'none';
+      document.body.style.backgroundColor = 'rgb(40,63,255)';
+      if (lockBtn) lockBtn.classList.add('is-visible');
+    }
+    // Smooth-scroll to a target and run onSettle once the scroll has actually stopped
+    // (programmatic=true keeps the lock/pin out of the way during the flight).
+    function smoothScrollTo(targetY, onSettle) {
+      programmatic = true;
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+      var lastY = NaN, stable = 0;
+      (function settle() {
+        var y = window.pageYOffset;
+        if (y === lastY) { stable++; } else { stable = 0; lastY = y; }
+        if (stable >= 3 || Math.abs(y - targetY) <= 2) {
+          programmatic = false;
+          if (onSettle) onSettle();
+          return;
+        }
+        requestAnimationFrame(settle);
+      })();
+    }
+    function exitPrototype() {
+      releaseLock();
+      // Scroll back up to the cards (prototype still shown, so the reveal plays out in
+      // reverse), then take it out of flow again. Clamp the target to the no-prototype
+      // page bottom so hiding it can't jump the page.
+      var maxNoProto = sectionProto.offsetTop - window.innerHeight;
+      var reframeY = sectionReframe ? sectionReframe.getBoundingClientRect().top + window.pageYOffset - headerH : 0;
+      var y = Math.max(0, Math.min(reframeY, maxNoProto));
+      smoothScrollTo(y, function () {
+        sectionProto.style.display = 'none';
+        protoShown = false;
+      });
+    }
+
+    // The CTA is the ONLY way in: the prototype is display:none in normal flow (so the
+    // presentation stops at the cards). Put it in flow, auto-scroll in, then lock.
+    if (btnViewProto && sectionProto) {
+      btnViewProto.addEventListener('click', function () {
+        if (protoShown) return;
+        sectionProto.style.display = 'block';
+        protoShown = true;
+        // Pre-set the pre-reveal state so the window doesn't flash fully-visible for a
+        // frame before the scroll-in animates it (skip under reduced motion).
+        if (!prefersReducedMotion) {
+          browserContainer.style.opacity = '0';
+          browserContainer.style.transform = 'translateY(24px) rotateZ(-2deg)';
+        }
+        smoothScrollTo(sectionProto.getBoundingClientRect().top + window.pageYOffset, engageLock);
+      });
+    }
+
+    // Trap window scrolling while locked, but let the app scroll internally
+    // (overscroll-behavior:contain on #act-root stops it chaining out).
+    window.addEventListener('wheel', function (e) {
+      if (!locked) return;
+      if (actRoot && actRoot.contains(e.target)) return;
+      e.preventDefault();
+    }, { passive: false });
+    window.addEventListener('touchmove', function (e) {
+      if (!locked) return;
+      if (actRoot && actRoot.contains(e.target)) return;
+      e.preventDefault();
+    }, { passive: false });
+    var SCROLL_KEYS = { ArrowUp: 1, ArrowDown: 1, PageUp: 1, PageDown: 1, Home: 1, End: 1, ' ': 1, Spacebar: 1 };
+    window.addEventListener('keydown', function (e) {
+      if (!locked || !SCROLL_KEYS[e.key]) return;
+      if (actRoot && actRoot.contains(document.activeElement)) return;
+      e.preventDefault();
+    });
+    // Safety net: snap back if anything (scrollbar drag, momentum) moves the window.
+    window.addEventListener('scroll', function () {
+      if (locked && window.pageYOffset !== lockedScrollY) window.scrollTo(0, lockedScrollY);
+    }, { passive: true });
+
+    // (No scroll-based auto-lock: the prototype can only be entered via the CTA, which
+    // reveals it and locks on arrival — so there's no natural scroll-in to jitter.)
+
+    // Never trap below 1050px, where the chrome is replaced by the fallback.
+    tooSmallMq.addEventListener('change', function () { if (tooSmallMq.matches) releaseLock(); });
+
+    // Keep the prototype correctly framed if the window is resized while it's open.
+    // Without this the page stays pinned to a now-stale offset and drifts out of frame;
+    // below 1050px we release so the too-small fallback takes over, and re-settle/re-lock
+    // when it grows back. Throttled to one correction per frame.
+    var resizeRaf = null;
+    window.addEventListener('resize', function () {
+      if (!protoShown || programmatic || resizeRaf) return;
+      resizeRaf = requestAnimationFrame(function () {
+        resizeRaf = null;
+        if (!protoShown || programmatic) return;
+        if (tooSmallMq.matches) { releaseLock(); return; }
+        resettleLock();
+      });
+    });
+
+    // Press-and-hold interaction (pointer events cover mouse + touch).
+    if (lockBtn) {
+      lockBtn.addEventListener('pointerdown', function (e) {
+        if (!locked) return;
+        e.preventDefault();
+        if (lockBtn.setPointerCapture) { try { lockBtn.setPointerCapture(e.pointerId); } catch (err) {} }
+        lockBtn.classList.add('is-holding');
+        holdTimer = setTimeout(function () { holdTimer = null; exitPrototype(); }, 1700);
+      });
+      function endHold() {
+        if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
+        lockBtn.classList.remove('is-holding');
+      }
+      lockBtn.addEventListener('pointerup', endHold);
+      lockBtn.addEventListener('pointercancel', endHold);
+    }
   }
 }());
 </script>
 
 <!-- Act view — high-fidelity prototype (fills the browser chrome above) -->
-<script src="js/act-view.js?v=fc21" defer></script>
+<script src="js/act-view.js?v=fc27" defer></script>
 
 </body>
 </html>
