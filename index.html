@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/act-view.css?v=fc30">
+<link rel="stylesheet" href="css/act-view.css?v=fc31">
 <style>
 :root {
   --primary: #283fff;
@@ -1086,16 +1086,22 @@ ul, ol { margin: 0; padding: 0; }
       document.body.style.backgroundColor = 'rgb(40,63,255)';
       if (lockBtn) lockBtn.classList.add('is-visible');
     }
-    // Smooth-scroll to a target and run onSettle once the scroll has actually stopped
-    // (programmatic=true keeps the lock/pin out of the way during the flight).
+    // Smooth-scroll to a target and run onSettle only once we've actually REACHED it.
+    // (The previous version settled when the position was unchanged for 3 frames — but
+    //  right after display:block the browser can take a few frames to start the smooth
+    //  scroll, so that check fired at the pre-scroll position and locked the page there:
+    //  blue background, no scroll. Intermittent, timing-dependent. This waits for the
+    //  target, with a ~3s frame-cap safety net and an exact final snap.)
     function smoothScrollTo(targetY, onSettle) {
       programmatic = true;
+      var maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      targetY = Math.max(0, Math.min(targetY, maxY));   // clamp so "reached" can be exact
       window.scrollTo({ top: targetY, behavior: 'smooth' });
-      var lastY = NaN, stable = 0;
+      var frames = 0;
       (function settle() {
-        var y = window.pageYOffset;
-        if (y === lastY) { stable++; } else { stable = 0; lastY = y; }
-        if (stable >= 3 || Math.abs(y - targetY) <= 2) {
+        frames++;
+        if (Math.abs(window.pageYOffset - targetY) <= 2 || frames > 180) {
+          window.scrollTo(0, targetY);   // guarantee the exact final position
           programmatic = false;
           if (onSettle) onSettle();
           return;
@@ -1198,7 +1204,7 @@ ul, ol { margin: 0; padding: 0; }
 </script>
 
 <!-- Act view — high-fidelity prototype (fills the browser chrome above) -->
-<script src="js/act-view.js?v=fc30" defer></script>
+<script src="js/act-view.js?v=fc31" defer></script>
 
 </body>
 </html>
